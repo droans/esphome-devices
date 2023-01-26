@@ -1,4 +1,4 @@
-lambda: >
+lambda: |-
   // Map weather states to MDI characters.
   std::map<std::string, std::string> weather_icon_map
     {

@@ -1,4 +1,4 @@
-lambda: >
+lambda: |-
   std::map<std::string, std::string> weather_icon_map
     {
       {"cloudy", "\U000F0590"},
