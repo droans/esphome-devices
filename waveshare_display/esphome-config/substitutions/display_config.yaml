@@ -1,0 +1,29 @@
+substitutions:
+
+  # Pins
+  CLOCK_PIN: GPIO18
+  MOSI_PIN: GPIO23
+  CS_PIN: GPIO19
+  DC_PIN: GPIO32
+  BUSY_PIN: GPIO22
+  RESET_PIN: GPIO21
+
+  # Config
+  MODEL: 7.50inv2b
+  REFRESH_DELAY: 120s
+  RESET_DURATION: 2ms
+  DISPLAY_NAME: main_display
+  ROTATION: 90°
+
+  # Display pages
+  PAGE_1_NAME: page1
+  PAGE_2_NAME: page2
+
+  # Display Scripts
+  UPDATE_SCRIPT_NAME: update_display
+  UPDATE_SCRIPT_MODE: restart
+
+  BOOT_SCRIPT_NAME: start_display
+  BOOT_SCRIPT_MODE: restart
+  BOOT_SCRIPT_NO_API_DELAY: 2s
+  BOOT_SCRIPT_API_REFRESH_DELAY: 5s

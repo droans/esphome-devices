@@ -1,0 +1,109 @@
+# Using external component instead of default waveshare_epaper
+# Reasons:
+#   * Default component does not include support for displaying colors
+#   * Default often causes the screens to appear grainy
+#
+# If you would like to use this with a B/W display, you should be able
+# to integrate these changes on your own. The steps below are a general idea,
+# but you should first retrieve the specification guide from Waveshare's site
+# and ensure the changes you are making are compatible/correct for your display.
+# I will not be providing support for other displays and will not be providing
+# much support for this display either.
+#
+# Instructions:
+#
+#   * Clone github.com/esphome/esphome.git
+#   * In a text editor, open esphome/components/waveshare_epaper/waveshare_epaper.cpp
+#   * Find the initialize function for your display. 
+#       * If you do not know what the C++ class is for your display, open display.py, go 
+#         to the MODELS dictionary, and locate your model. Eg, `7.50in` will use 
+#         WaveshareEPaper7P5In, `2.13in` will use WaveshareEPaperTypeAModel
+#   * Using the code given at the link below, copy the booster settings into your 
+#     initialize function. Paste them in the same place for your display class
+#     https://github.com/esphome/issues/issues/2216#issuecomment-1315603953
+#
+
+external_components:
+  - source:
+      type: git
+      url: https://github.com/droans/esphome-components
+      ref: waveshare-color
+    components:
+      - waveshare_epaper
+
+color:
+  - id: RED
+    red: 100%
+    green: 0%
+    blue: 0%
+    white: 0%
+  - id: BLACK
+    red: 0%
+    green: 0%
+    blue: 0%
+    white: 0%
+  - id: WHITE
+    red: 0%
+    green: 0%
+    blue: 0%
+    white: 100%
+
+spi:
+  clk_pin: ${CLOCK_PIN}
+  mosi_pin: ${MOSI_PIN}
+
+display:
+  - platform: waveshare_epaper
+    cs_pin: ${CS_PIN}
+    dc_pin: ${DC_PIN}
+    busy_pin: ${BUSY_PIN}
+    reset_pin: ${RESET_PIN}
+    model: ${MODEL}
+    update_interval: never
+    reset_duration: ${RESET_DURATION}
+    id: ${DISPLAY_NAME}
+    rotation: ${ROTATION}
+    pages: 
+      - id: ${PAGE_1_NAME}
+        <<: !include pages/page1.yaml
+      - id: ${PAGE_2_NAME}
+        <<: !include pages/weather.yaml
+
+script:
+    # Automatically update display after delay has passed. 
+    # By using a script and having the delay be the first
+    # action, we can ensure that the display waits two 
+    # minutes between any refresh (on boot, button press, refresh).
+    # If you would like to update the display outside of this script,
+    # add an action to execute this script at the end of your code.
+  - id: ${UPDATE_SCRIPT_NAME}
+    mode: ${UPDATE_SCRIPT_MODE}
+    then: 
+      - delay: ${REFRESH_DELAY}
+      - if: 
+          condition:
+            display.is_displaying_page: ${PAGE_2_NAME}
+          then:
+            - display.page.show_previous: ${DISPLAY_NAME}
+          else:
+            - display.page.show_next: ${DISPLAY_NAME}
+      - component.update: ${DISPLAY_NAME}
+      - script.execute: ${UPDATE_SCRIPT_NAME}
+
+  # First refresh of display after being plugged in.
+  # Will wait five seconds after an API connection
+  # to help improve the chances that data from the 
+  # HA sensors has come through.
+  - id: ${BOOT_SCRIPT_NAME}
+    mode: ${BOOT_SCRIPT_MODE}
+    then: 
+      - if:
+          condition:
+            api.connected:
+          then:
+            - delay: ${BOOT_SCRIPT_API_REFRESH_DELAY}
+            - component.update: ${DISPLAY_NAME}
+            - script.execute: ${UPDATE_SCRIPT_NAME}
+          else:
+            - delay: ${BOOT_SCRIPT_NO_API_DELAY}
+            - script.execute: ${BOOT_SCRIPT_NAME}

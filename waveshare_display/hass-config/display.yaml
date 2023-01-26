@@ -1,0 +1,646 @@
+#################################################################################################################
+#
+# Find and replace the following entities:
+# * person.PERSON_1: Device Tracker for Person 1
+# * person.PERSON_2: Device Tracker for Person 2
+# * sensor.PERSON_1_time_to_work: Commute tracker for person 1 from current location to work (Designed for Waze)
+# * sensor.PERSON_2_time_to_work: Commute tracker for person 2 from current location to work (Designed for Waze)
+# * sensor.PERSON_1_time_to_home: Commute tracker for person 1 from current location to home (Designed for Waze)
+# * sensor.PERSON_2_time_to_home: Commute tracker for person 2 from current location to home (Designed for Waze)
+# * weather.home: Weather conditions for current location. (Designed for Netatmo)
+# * weather.WEATHER_hourly: Hourly weather forecasts. (Designed for NWS)
+#
+# You will also need to add the iCal Calendar custom component.
+#################################################################################################################
+
+sensor:
+  - platform: template
+    sensors:
+      forecast_1:
+        friendly_name: Hourly Forecast 1
+        unique_id: hourly_forecast_1
+        value_template: >
+          {% set entity = 'weather.WEATHER_hourly' %}
+          {% set forecast = 'forecast' %}
+          {% set hr = 2 %}
+          {% set temperature = 'temperature' %}
+
+          {% if states(entity) in (none, 'unavailable') %}
+            N/A
+          {% else %}
+            {% set forecasts = state_attr(entity, forecast) %}
+            {% if forecasts in (none,'unavailable') %}
+              unavailable          
+            {% else %}
+              {{forecasts[hr].get(temperature, 'unavailable') }}
+            {% endif %}
+          {% endif %}
+
+        attribute_templates:
+          condition: > 
+            {% set entity = 'weather.WEATHER_hourly' %}
+            {% set forecast = 'forecast' %}
+            {% set hr = 2 %}
+            {% set condition = 'condition' %}
+
+            {% if states(entity) in (none, 'unavailable') %}
+              N/A
+            {% else %}
+              {% set forecasts = state_attr(entity, forecast) %}
+
+              {% if forecasts in (none,'unavailable') %}
+                unavailable          
+              {% else %}
+              {{ forecasts[hr].get(condition,'unavailable') }}
+              {% endif %}
+            {% endif %}
+
+          timestamp: >
+            {% set entity = 'weather.WEATHER_hourly' %}
+            {% set forecast = 'forecast' %}
+            {% set hr = 2 %}
+            {% set dt = 'datetime' %}
+            {% set dt_fmt = '%-I:%M %p' %}
+
+            {% if states(entity) in (none, 'unavailable') %}
+              N/A
+            {% else %}
+              {% set forecasts = state_attr(entity, forecast) %}
+
+              {% if forecasts in (none,'unavailable') %}
+                unavailable              
+              {% else %}
+              {{ as_datetime(state_attr(entity,forecast)[hr][dt]).strftime(dt_fmt) | default(now()) }}
+              {% endif %}
+            {% endif %}
+
+      forecast_2:
+        friendly_name: Hourly Forecast 2
+        unique_id: hourly_forecast_2
+        value_template: >
+          {% set entity = 'weather.WEATHER_hourly' %}
+          {% set forecast = 'forecast' %}
+          {% set hr = 4 %}
+          {% set temperature = 'temperature' %}
+
+          {% if states(entity) in (none, 'unavailable') %}
+            N/A
+          
+          {% else %}
+            {% set forecasts = state_attr(entity, forecast) %}
+              {% if forecasts in (none,'unavailable') %}
+                unavailable          
+              {% else %}
+                {{state_attr(entity, forecast)[hr][temperature] }}
+              {% endif %}
+          
+          {% endif %}
+          
+        attribute_templates:
+          condition: > 
+            {% set entity = 'weather.WEATHER_hourly' %}
+            {% set forecast = 'forecast' %}
+            {% set hr = 4 %}
+            {% set condition = 'condition' %}
+
+            {% if states(entity) in (none, 'unavailable') %}
+              N/A
+            {% else %}
+              {% set forecasts = state_attr(entity, forecast) %}
+
+              {% if forecasts in (none,'unavailable') %}
+                unavailable          
+              {% else %}
+
+                {{ forecasts[hr].get(condition,'unavailable') }}
+              {% endif %}
+            {% endif %}
+
+          timestamp: >
+            {% set entity = 'weather.WEATHER_hourly' %}
+            {% set forecast = 'forecast' %}
+            {% set hr = 4 %}
+            {% set dt = 'datetime' %}
+            {% set dt_fmt = '%-I:%M %p' %}
+
+            {% if states(entity) in (none, 'unavailable') %}
+            N/A
+            {% else %}
+              {% set forecasts = state_attr(entity, forecast) %}
+
+              {% if forecasts in (none,'unavailable') %}
+                unavailable              
+              {% else %}
+              {{ as_datetime(state_attr(entity,forecast)[hr][dt]).strftime(dt_fmt) | default(now()) }}
+              {% endif %}
+            {% endif %}
+
+      forecast_3:
+        friendly_name: Hourly Forecast 3
+        unique_id: hourly_forecast_3
+        value_template: >
+          {% set entity = 'weather.WEATHER_hourly' %}
+          {% set forecast = 'forecast' %}
+          {% set hr = 6 %}
+          {% set temperature = 'temperature' %}
+
+          {% if states(entity) in (none, 'unavailable') %}
+            N/A
+          
+          {% else %}
+            {% set forecasts = state_attr(entity, forecast) %}
+            {% if forecasts in (none,'unavailable') %}
+              unavailable          
+            {% else %}
+          
+              {{state_attr(entity, forecast)[hr][temperature] }}
+            {% endif %}
+          
+          {% endif %}
+
+        attribute_templates:
+          condition: > 
+            {% set entity = 'weather.WEATHER_hourly' %}
+            {% set forecast = 'forecast' %}
+            {% set hr = 6 %}
+            {% set condition = 'condition' %}
+
+            {% if states(entity) in (none, 'unavailable') %}
+              N/A
+            {% else %}
+              {% set forecasts = state_attr(entity, forecast) %}
+              {% if forecasts in (none,'unavailable') %}
+                unavailable          
+              {% else %}
+
+                {{ forecasts[hr].get(condition,'unavailable') }}
+              {% endif %}
+            {% endif %}
+
+          timestamp: >
+            {% set entity = 'weather.WEATHER_hourly' %}
+            {% set forecast = 'forecast' %}
+            {% set hr = 6 %}
+            {% set dt = 'datetime' %}
+            {% set dt_fmt = '%-I:%M %p' %}
+
+            {% if states(entity) in (none, 'unavailable') %}
+            N/A
+            {% else %}
+              {% set forecasts = state_attr(entity, forecast) %}
+
+              {% if forecasts in (none,'unavailable') %}
+                unavailable              
+              {% else %}
+              {{ as_datetime(state_attr(entity,forecast)[hr][dt]).strftime(dt_fmt) | default(now()) }}
+              {% endif %}
+            {% endif %}
+
+      forecast_4:
+        friendly_name: Hourly Forecast 4
+        unique_id: hourly_forecast_4
+        value_template: >
+          {% set entity = 'weather.WEATHER_hourly' %}
+          {% set forecast = 'forecast' %}
+          {% set hr = 8 %}
+          {% set temperature = 'temperature' %}
+
+          {% if states(entity) in (none, 'unavailable') %}
+            N/A
+          
+          {% else %}
+              {% set forecasts = state_attr(entity, forecast) %}
+
+              {% if forecasts in (none,'unavailable') %}
+                unavailable              
+              {% else %}
+              {{state_attr(entity, forecast)[hr][temperature] }}
+            {% endif %}
+          {% endif %}
+          
+        attribute_templates:
+          condition: > 
+            {% set entity = 'weather.WEATHER_hourly' %}
+            {% set forecast = 'forecast' %}
+            {% set hr = 8 %}
+            {% set condition = 'condition' %}
+
+            {% if states(entity) in (none, 'unavailable') %}
+              N/A
+            {% else %}
+              {% set forecasts = state_attr(entity, forecast) %}
+
+              {% if forecasts in (none,'unavailable') %}
+                unavailable              
+              {% else %}
+
+                {{ forecasts[hr].get(condition,'unavailable') }}
+              {% endif %}
+            {% endif %}
+
+          timestamp: >
+            {% set entity = 'weather.WEATHER_hourly' %}
+            {% set forecast = 'forecast' %}
+            {% set hr = 8 %}
+            {% set dt = 'datetime' %}
+            {% set dt_fmt = '%-I:%M %p' %}
+
+            {% if states(entity) in (none, 'unavailable') %}
+              N/A
+            
+            {% else %}
+              {{ as_datetime(state_attr(entity,forecast)[hr][dt]).strftime(dt_fmt) | default(now()) }}
+            
+            {% endif %}
+
+      forecast_day_0:
+        friendly_name: Today's Forecast
+        unique_id: forecast_day_0
+        value_template: >-
+          {% set forecast = state_attr('weather.home','forecast') %}
+          {% if forecast in (none, 'unavailable','unknown') %}
+            0
+          {% else %}
+            {{ forecast[0].get('temperature',0) }}
+          {% endif %}
+        attribute_templates:
+          condition: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              0
+            {% else %}
+              {{ forecast[0].get('condition',0) }}
+            {% endif %}
+          low: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              0
+            {% else %}
+              {{ forecast[0].get('templow',0) }}
+            {% endif %}
+          day: >
+            Today
+
+      forecast_day_1:
+        friendly_name: Tomorrow's Forecast
+        unique_id: forecast_day_1
+        value_template: >-
+          {% set forecast = state_attr('weather.home','forecast') %}
+          {% if forecast in (none, 'unavailable','unknown') %}
+            0
+          {% else %}
+            {{ forecast[1].get('temperature',0) }}
+          {% endif %}
+        attribute_templates:
+          condition: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              0
+            {% else %}
+              {{ forecast[1].get('condition',0) }}
+            {% endif %}
+          low: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              0
+            {% else %}
+              {{ forecast[1].get('templow',0) }}
+            {% endif %}
+          day: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              
+            {% else %}
+              {{ as_timestamp(forecast[1].datetime) | timestamp_custom('%a') | default('')}}
+            {% endif %}
+
+      forecast_day_2:
+        friendly_name: Forecast Today Plus Two
+        unique_id: forecast_day_2
+        value_template: >-
+          {% set forecast = state_attr('weather.home','forecast') %}
+          {% if forecast in (none, 'unavailable','unknown') %}
+            0
+          {% else %}
+            {{ forecast[2].get('temperature',0) }}
+          {% endif %}
+        attribute_templates:
+          condition: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              0
+            {% else %}
+              {{ forecast[2].get('condition',0) }}
+            {% endif %}
+          low: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              0
+            {% else %}
+              {{ forecast[2].get('templow',0) }}
+            {% endif %}
+          day: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              
+            {% else %}
+              {{ as_timestamp(forecast[2].datetime) | timestamp_custom('%a') | default('')}}
+            {% endif %}
+
+      forecast_day_3:
+        friendly_name: Forecast Today Plus Three
+        unique_id: forecast_day_3
+        value_template: >-
+          {% set forecast = state_attr('weather.home','forecast') %}
+          {% if forecast in (none, 'unavailable','unknown') %}
+            0
+          {% else %}
+            {{ forecast[3].get('temperature',0) }}
+          {% endif %}
+        attribute_templates:
+          condition: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              0
+            {% else %}
+              {{ forecast[3].get('condition',0) }}
+            {% endif %}
+          low: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              0
+            {% else %}
+              {{ forecast[3].get('templow',0) }}
+            {% endif %}
+          day: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              
+            {% else %}
+              {{ as_timestamp(forecast[3].datetime) | timestamp_custom('%a') | default('')}}
+            {% endif %}
+
+      forecast_day_4:
+        friendly_name: Forecast Today Plus Four
+        unique_id: forecast_day_4
+        value_template: >-
+          {% set forecast = state_attr('weather.home','forecast') %}
+          {% if forecast in (none, 'unavailable','unknown') %}
+            0
+          {% else %}
+            {{ forecast[4].get('temperature',0) }}
+          {% endif %}
+        attribute_templates:
+          condition: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              0
+            {% else %}
+              {{ forecast[4].get('condition',0) }}
+            {% endif %}
+          low: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              0
+            {% else %}
+              {{ forecast[4].get('templow',0) }}
+            {% endif %}
+          day: >
+            {% set forecast = state_attr('weather.home','forecast') %}
+            {% if forecast in (none, 'unavailable','unknown') %}
+              
+            {% else %}
+              {{ as_timestamp(forecast[4].datetime) | timestamp_custom('%a') | default('')}}
+            {% endif %}
+
+      forecast_day_y_positions:
+        friendly_name: Forecast Day Y Positions
+        unique_id: forecast_day_y_positions
+        value_template: "OK"
+        attribute_templates: 
+          forecasts: >
+            {% set forecasts = [
+                states('sensor.forecast_day_0') | int(0),
+                state_attr('sensor.forecast_day_0','low') | int(0),
+                states('sensor.forecast_day_1') | int(0),
+                state_attr('sensor.forecast_day_1','low') | int(0),
+                states('sensor.forecast_day_2') | int(0),
+                state_attr('sensor.forecast_day_2','low') | int(0),
+                states('sensor.forecast_day_3') | int(0),
+                state_attr('sensor.forecast_day_3','low') | int(0),
+                states('sensor.forecast_day_4') | int(0),
+                state_attr('sensor.forecast_day_4','low') | int(0)
+              ]
+            %}
+            {{ forecasts }}
+          f_min: >
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','forecasts') | min %}
+            {% set f_min = (((f_min - 3) / 5) | round(0,'floor')) * 5 %}
+            {{ f_min }}
+          f_max: >
+            {% set f_max = state_attr('sensor.forecast_day_y_positions','forecasts') | max %}
+            {% set f_max = (((f_max + 3) / 5) | round(0,'ceil')) * 5 %}
+            {{ f_max }}
+          y_min: 400
+          y_max: 755
+          multiplier: >
+            {% set y_diff = (state_attr('sensor.forecast_day_y_positions','y_max') | int) - (state_attr('sensor.forecast_day_y_positions','y_min') | int) %}
+            {% set f_diff = (state_attr('sensor.forecast_day_y_positions','f_max') | int) - (state_attr('sensor.forecast_day_y_positions','f_min') | int) %}
+            {{ y_diff / f_diff }}
+          day_0_high: >
+            {% set day = 0 %}
+            {% set y_end = state_attr('sensor.forecast_day_y_positions','y_max') | int %}
+            {% set multiplier = state_attr('sensor.forecast_day_y_positions','multiplier') %}
+            {% set forecast = max(state_attr('sensor.forecast_day_y_positions','forecasts')[day*2], state_attr('sensor.forecast_day_y_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','f_min') %}
+            {{ y_end - (multiplier * (forecast - f_min)) }}
+          day_0_low: >
+            {% set day = 0 %}
+            {% set y_end = state_attr('sensor.forecast_day_y_positions','y_max') | int %}
+            {% set multiplier = state_attr('sensor.forecast_day_y_positions','multiplier') %}
+            {% set forecast = min(state_attr('sensor.forecast_day_y_positions','forecasts')[day*2], state_attr('sensor.forecast_day_y_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','f_min') %}
+            {% set day_max = state_attr('sensor.forecast_day_y_positions','day_' + (day | string) + '_high') %}
+            {{ (y_end - (multiplier * (forecast - f_min))) - day_max }}           
+          day_1_high: >
+            {% set day = 1 %}
+            {% set y_end = state_attr('sensor.forecast_day_y_positions','y_max') | int %}
+            {% set multiplier = state_attr('sensor.forecast_day_y_positions','multiplier') %}
+            {% set forecast = max(state_attr('sensor.forecast_day_y_positions','forecasts')[day*2], state_attr('sensor.forecast_day_y_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','f_min') %}
+            {{ y_end - (multiplier * (forecast - f_min)) }}   
+          day_1_low: >
+            {% set day = 1 %}
+            {% set y_end = state_attr('sensor.forecast_day_y_positions','y_max') | int %}
+            {% set multiplier = state_attr('sensor.forecast_day_y_positions','multiplier') %}
+            {% set forecast = min(state_attr('sensor.forecast_day_y_positions','forecasts')[day*2], state_attr('sensor.forecast_day_y_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','f_min') %}
+            {% set day_max = state_attr('sensor.forecast_day_y_positions','day_' + (day | string) + '_high') %}
+            {{ (y_end - (multiplier * (forecast - f_min))) - day_max }}          
+          day_2_high: >
+            {% set day = 2 %}
+            {% set y_end = state_attr('sensor.forecast_day_y_positions','y_max') | int %}
+            {% set multiplier = state_attr('sensor.forecast_day_y_positions','multiplier') %}
+            {% set forecast = max(state_attr('sensor.forecast_day_y_positions','forecasts')[day*2], state_attr('sensor.forecast_day_y_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','f_min') %}
+            {{ y_end - (multiplier * (forecast - f_min)) }}
+          day_2_low: >
+            {% set day = 2 %}
+            {% set y_end = state_attr('sensor.forecast_day_y_positions','y_max') | int %}
+            {% set multiplier = state_attr('sensor.forecast_day_y_positions','multiplier') %}
+            {% set forecast = min(state_attr('sensor.forecast_day_y_positions','forecasts')[day*2], state_attr('sensor.forecast_day_y_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','f_min') %}
+            {% set day_max = state_attr('sensor.forecast_day_y_positions','day_' + (day | string) + '_high') %}
+            {{ (y_end - (multiplier * (forecast - f_min))) - day_max }}            
+          day_3_high: >
+            {% set day = 3 %}
+            {% set y_end = state_attr('sensor.forecast_day_y_positions','y_max') | int %}
+            {% set multiplier = state_attr('sensor.forecast_day_y_positions','multiplier') %}
+            {% set forecast = max(state_attr('sensor.forecast_day_y_positions','forecasts')[day*2], state_attr('sensor.forecast_day_y_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','f_min') %}
+            {{ y_end - (multiplier * (forecast - f_min)) }}          
+          day_3_low: >
+            {% set day = 3 %}
+            {% set y_end = state_attr('sensor.forecast_day_y_positions','y_max') | int %}
+            {% set multiplier = state_attr('sensor.forecast_day_y_positions','multiplier') %}
+            {% set forecast = min(state_attr('sensor.forecast_day_y_positions','forecasts')[day*2], state_attr('sensor.forecast_day_y_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','f_min') %}
+            {% set day_max = state_attr('sensor.forecast_day_y_positions','day_' + (day | string) + '_high') %}
+            {{ (y_end - (multiplier * (forecast - f_min))) - day_max }}         
+          day_4_high: >
+            {% set day = 4 %}
+            {% set y_end = state_attr('sensor.forecast_day_y_positions','y_max') | int %}
+            {% set multiplier = state_attr('sensor.forecast_day_y_positions','multiplier') %}
+            {% set forecast = max(state_attr('sensor.forecast_day_y_positions','forecasts')[day*2], state_attr('sensor.forecast_day_y_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','f_min') %}
+            {{ y_end - (multiplier * (forecast - f_min)) }} 
+          day_4_low: >
+            {% set day = 4 %}
+            {% set y_end = state_attr('sensor.forecast_day_y_positions','y_max') | int %}
+            {% set multiplier = state_attr('sensor.forecast_day_y_positions','multiplier') %}
+            {% set forecast = min(state_attr('sensor.forecast_day_y_positions','forecasts')[day*2], state_attr('sensor.forecast_day_y_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_y_positions','f_min') %}
+            {% set day_max = state_attr('sensor.forecast_day_y_positions','day_' + (day | string) + '_high') %}
+            {{ (y_end - (multiplier * (forecast - f_min))) - day_max }}         
+
+
+
+
+      cur_time:
+        friendly_name: Current Time
+        unique_id: cur_time
+        value_template: >
+          {% set time_fmt = '%a %m/%d/%y %-I:%M %p' %}
+          {{ now().strftime(time_fmt)}}
+
+      monica_commute:
+        friendly_name: Monica Commute
+        unique_id: monica_commute
+        value_template: > 
+          {% set work_commute = 'sensor.PERSON_1_time_to_work' %}
+          {% set home_commute = 'sensor.PERSON_1_time_to_home' %}
+
+          {% set to_home = states(home_commute) | int(0) %}
+          {% set to_work = states(work_commute) | int(0) %}
+
+          {% if to_home in (none, 'unavailable') %}
+            UNKNOWN
+          {% elif to_home >= 4 %}
+            {{ to_home }} MIN
+          {% else %}
+            {{ to_work }} MIN
+          {% endif %}
+
+        attribute_templates:
+          travel: >
+            {% set work_commute = 'sensor.PERSON_1_time_to_work' %}
+            {% set home_commute = 'sensor.PERSON_1_time_to_home' %}
+
+            {% set to_home = states(home_commute) | int(0) %}
+            {% set to_work = states(work_commute) | int(0) %}
+
+            {% if to_home in (none, 'unavailable') %}
+              UNKNOWN
+            {% elif to_home >= 4 %}
+              TO HOME
+            {% else %}
+              TO WORK
+            {% endif %}
+
+          route: >
+            {% set work_commute = 'sensor.PERSON_1_time_to_work' %}
+            {% set home_commute = 'sensor.PERSON_1_time_to_home' %}
+
+            {% set to_home = states(home_commute) | int(0) %}
+            {% set to_work = states(work_commute) | int(0) %}
+
+            {% if states(home_commute) in (none, 'unavailable') or states(work_commute) in (none, 'unavailable') %}
+              N/A
+            {% elif states(home_commute) | int(0) >= 4 %}
+              Via {{ (state_attr(home_commute, 'route') | default("N/A   "))[5:] }}
+            {% else %}
+              Via {{ (state_attr(work_commute, 'route') | default("N/A   "))[5:] }}
+            {% endif %}
+          location: >
+            {% set loc = states('person.PERSON_1') %}
+            {% if loc == 'away' %}
+              Away
+            {% else %}
+              At {{ loc | title }}
+            {% endif %}
+
+      michael_commute:
+        friendly_name: Michael Commute
+        unique_id: michael_commute
+        value_template: > 
+          {% set work_commute = 'sensor.PERSON_2_time_to_work' %}
+          {% set home_commute = 'sensor.PERSON_2_time_to_home' %}
+
+          {% set to_home = states(home_commute) | int(0) %}
+          {% set to_work = states(work_commute) | int(0) %}
+
+          {% if to_home in (none, 'unavailable') %}
+            UNKNOWN
+          {% elif to_home >= 4 %}
+            {{ to_home }} MIN
+          {% else %}
+            {{ to_work }} MIN
+          {% endif %}
+
+        attribute_templates:
+          travel: >
+            {% set work_commute = 'sensor.PERSON_2_time_to_work' %}
+            {% set home_commute = 'sensor.PERSON_2_time_to_home' %}
+
+            {% set to_home = states(home_commute) | int(0) %}
+            {% set to_work = states(work_commute) | int(0) %}
+
+            {% if to_home in (none, 'unavailable') %}
+              UNKNOWN
+            {% elif to_home >= 4 %}
+              TO HOME
+            {% else %}
+              TO WORK
+            {% endif %}
+
+          route: >
+            {% set work_commute = 'sensor.PERSON_2_time_to_work' %}
+            {% set home_commute = 'sensor.PERSON_2_time_to_home' %}
+
+            {% set to_home = states(home_commute) | int(0) %}
+            {% set to_work = states(work_commute) | int(0) %}
+
+            {% if states(home_commute) in (none, 'unavailable') or states(work_commute) in (none, 'unavailable') %}
+              N/A
+            {% elif states(home_commute) | int(0) >= 4 %}
+              Via {{ (state_attr(home_commute, 'route') | default("N/A   "))[5:] }}
+            {% else %}
+              Via {{ (state_attr(work_commute, 'route') | default("N/A   "))[5:] }}
+            {% endif %}
+          location: >
+            {% set loc = states('person.PERSON_2') %}
+            {% if loc == 'away' %}
+              Away
+            {% else %}
+              At {{ loc | title }}
+            {% endif %}

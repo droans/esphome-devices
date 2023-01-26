@@ -1,0 +1,65 @@
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: ${BUTTON_1_PIN}
+      mode:
+        input: true
+        pullup: true
+    name: ${BUTTON_1_NAME}
+    internal: true
+    filters:
+      - delayed_on: ${BUTTON_DELAY_ON}
+      - delayed_off: ${BUTTON_DELAY_OFF}
+      - invert
+    on_press:
+      then: 
+        - if: 
+            condition:
+              display.is_displaying_page: ${PAGE_2_NAME}
+            then:
+              - display.page.show_previous: ${DISPLAY_NAME}
+            else:
+              - display.page.show_next: ${DISPLAY_NAME}
+        - component.update: ${DISPLAY_NAME}
+        - script.execute: ${UPDATE_SCRIPT_NAME}
+
+  - platform: gpio
+    pin:
+      number: ${BUTTON_2_PIN}
+      mode:
+        input: true
+        pullup: true
+    name: ${BUTTON_2_NAME}
+    internal: true
+    filters:
+      - delayed_on: ${BUTTON_DELAY_ON}
+      - delayed_off: ${BUTTON_DELAY_OFF}
+      - invert
+    on_press:
+      then:
+        - component.update: ${DISPLAY_NAME}
+        - script.execute: ${UPDATE_SCRIPT_NAME}
+        
+  - platform: gpio
+    pin:
+      number: ${BUTTON_3_PIN}
+      mode:
+        input: true
+        pullup: true
+    name: ${BUTTON_3_NAME}
+    internal: true
+    filters:
+      - delayed_on: ${BUTTON_DELAY_ON}
+      - delayed_off: ${BUTTON_DELAY_OFF}
+      - invert
+    on_press: 
+      then: 
+        - if: 
+            condition:
+              display.is_displaying_page: ${PAGE_2_NAME}
+            then:
+              - display.page.show_previous: ${DISPLAY_NAME}
+            else:
+              - display.page.show_next: ${DISPLAY_NAME}
+        - component.update: ${DISPLAY_NAME}
+        - script.execute: ${UPDATE_SCRIPT_NAME}

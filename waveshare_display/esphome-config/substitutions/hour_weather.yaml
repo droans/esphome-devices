@@ -1,0 +1,30 @@
+substitutions:
+  CURRENT_TEMP_ENTITY: sensor.current_temperature
+  CURRENT_CONDITIONS_ENTITY: weather.weather_hourly
+
+  HR_0_ENTITY: sensor.forecast_1
+  HR_1_ENTITY: sensor.forecast_2
+  HR_2_ENTITY: sensor.forecast_3
+  HR_3_ENTITY: sensor.forecast_4
+
+  CONDITIONS_ATTR: condition
+  TIME_ATTR: timestamp
+  
+  ##############################################################
+
+  CURRENT_TEMP_ID: weather_temperature
+  HR_0_TEMP_ID: weather_temperature_hr_0
+  HR_1_TEMP_ID: weather_temperature_hr_1
+  HR_2_TEMP_ID: weather_temperature_hr_2
+  HR_3_TEMP_ID: weather_temperature_hr_3
+  
+  CURRENT_CONDITIONS_ID: weather_condition_now
+  HR_0_CONDITION_ID: weather_condition_0
+  HR_1_CONDITION_ID: weather_condition_1
+  HR_2_CONDITION_ID: weather_condition_2
+  HR_3_CONDITION_ID: weather_condition_3
+  
+  HR_0_TIME_ID: weather_timestamp_0
+  HR_1_TIME_ID: weather_timestamp_1
+  HR_2_TIME_ID: weather_timestamp_2
+  HR_3_TIME_ID: weather_timestamp_3

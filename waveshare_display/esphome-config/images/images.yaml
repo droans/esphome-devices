@@ -1,0 +1,6 @@
+image:
+  - file: ${WIFI_QR_CODE_PICTURE}
+    id: ${WIFI_QR_CODE_ID}
+    type: ${WIFI_QR_CODE_TYPE}
+    resize: ${WIFI_QR_CODE_RESIZE}
+    

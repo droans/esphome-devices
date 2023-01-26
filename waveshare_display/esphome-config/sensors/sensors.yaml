@@ -1,0 +1,140 @@
+sensor:
+############################################################
+####################      WEATHER      #####################
+############################################################
+  - platform: homeassistant
+    entity_id: ${CURRENT_TEMP_ENTITY}
+    id: ${CURRENT_TEMP_ID}
+    
+  - platform: homeassistant
+    entity_id: ${HR_0_ENTITY}
+    id: ${HR_0_TEMP_ID}
+    
+  - platform: homeassistant
+    entity_id: ${HR_1_ENTITY}
+    id: ${HR_1_TEMP_ID}
+    
+  - platform: homeassistant
+    entity_id: ${HR_2_ENTITY}
+    id: ${HR_2_TEMP_ID}
+    
+  - platform: homeassistant
+    entity_id: ${HR_3_ENTITY}
+    id: ${HR_3_TEMP_ID}
+
+  - platform: homeassistant
+    id: ${DAY_0_HIGH_TEMP_ID}
+    entity_id: ${DAY_0_ENTITY}
+
+  - platform: homeassistant
+    id: ${DAY_0_LOW_TEMP_ID}
+    entity_id: ${DAY_0_ENTITY}
+    attribute: ${DAYS_LOW_TEMP_ATTR}
+
+  - platform: homeassistant
+    id: ${DAY_1_HIGH_TEMP_ID}
+    entity_id: ${DAY_1_ENTITY}
+
+  - platform: homeassistant
+    id: ${DAY_1_LOW_TEMP_ID}
+    entity_id: ${DAY_1_ENTITY}
+    attribute: ${DAYS_LOW_TEMP_ATTR}
+
+  - platform: homeassistant
+    id: ${DAY_2_HIGH_TEMP_ID}
+    entity_id: ${DAY_2_ENTITY}
+
+  - platform: homeassistant
+    id: ${DAY_2_LOW_TEMP_ID}
+    entity_id: ${DAY_2_ENTITY}
+    attribute: ${DAYS_LOW_TEMP_ATTR}
+
+  - platform: homeassistant
+    id: ${DAY_3_HIGH_TEMP_ID}
+    entity_id: ${DAY_3_ENTITY}
+
+  - platform: homeassistant
+    id: ${DAY_3_LOW_TEMP_ID}
+    entity_id: ${DAY_3_ENTITY}
+    attribute: ${DAYS_LOW_TEMP_ATTR}
+
+  - platform: homeassistant
+    id: ${DAY_4_HIGH_TEMP_ID}
+    entity_id: ${DAY_4_ENTITY}
+
+  - platform: homeassistant
+    id: ${DAY_4_LOW_TEMP_ID}
+    entity_id: ${DAY_4_ENTITY}
+    attribute: ${DAYS_LOW_TEMP_ATTR}
+
+  - platform: homeassistant
+    id: ${DAY_0_HIGH_Y_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${DAY_0_HIGH_Y_ATTR}
+
+  - platform: homeassistant
+    id: ${DAY_0_LOW_Y_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${DAY_0_LOW_Y_ATTR}
+    
+  - platform: homeassistant
+    id: ${DAY_1_HIGH_Y_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${DAY_1_HIGH_Y_ATTR}
+
+  - platform: homeassistant
+    id: ${DAY_1_LOW_Y_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${DAY_1_LOW_Y_ATTR}
+    
+  - platform: homeassistant
+    id: ${DAY_2_HIGH_Y_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${DAY_2_HIGH_Y_ATTR}
+
+  - platform: homeassistant
+    id: ${DAY_2_LOW_Y_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${DAY_2_LOW_Y_ATTR}
+    
+  - platform: homeassistant
+    id: ${DAY_3_HIGH_Y_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${DAY_3_HIGH_Y_ATTR}
+
+  - platform: homeassistant
+    id: ${DAY_3_LOW_Y_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${DAY_3_LOW_Y_ATTR}
+    
+  - platform: homeassistant
+    id: ${DAY_4_HIGH_Y_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${DAY_4_HIGH_Y_ATTR}
+
+  - platform: homeassistant
+    id: ${DAY_4_LOW_Y_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${DAY_4_LOW_Y_ATTR}
+
+  - platform: homeassistant
+    id: ${F_MIN_TEMP_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${F_MIN_TEMP_ATTR}
+
+  - platform: homeassistant
+    id: ${F_MAX_TEMP_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${F_MAX_TEMP_ATTR}
+
+  - platform: homeassistant
+    id: ${Y_MIN_TEMP_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${Y_MIN_TEMP_ATTR}
+
+  - platform: homeassistant
+    id: ${Y_MAX_TEMP_ID}
+    entity_id: ${DAYS_Y_POSITION_ENTITY}
+    attribute: ${Y_MAX_TEMP_ATTR}
+
+    

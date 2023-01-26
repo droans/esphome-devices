@@ -1,0 +1,40 @@
+substitutions:
+  BUTTON_1_NAME: Top Button
+  BUTTON_1_PIN: GPIO16
+  BUTTON_1_INTERNAL: 'true'
+
+  BUTTON_2_NAME: Middle Button
+  BUTTON_2_PIN: GPIO5
+  BUTTON_2_INTERNAL: 'true'
+
+  BUTTON_3_NAME: Bottom Button
+  BUTTON_3_PIN: GPIO17
+  BUTTON_3_INTERNAL: 'true'
+
+  BUTTON_DELAY_ON: 10ms
+  BUTTON_DELAY_OFF: 10ms
+
+  CURRENT_TIME_ENTITY: sensor.cur_time
+
+  PERSON_1_COMMUTE_ENTITY: sensor.PERSON_1_commute
+  PERSON_2_COMMUTE_ENTITY: sensor.PERSON_2_commute
+
+  COMMUTE_ROUTE_ATTR: route
+  COMMUTE_TO_ATTR: travel
+  LOCATION_ATTR:  location
+  
+  ##############################################################
+
+  CURRENT_TIME_ID: current_time
+
+  PERSON_1_COMMUTE_TIME_ID: PERSON_1_commute
+  PERSON_2_COMMUTE_TIME_ID: PERSON_2_commute
+
+  PERSON_1_COMMUTE_ROUTE_ID: PERSON_1_route
+  PERSON_2_COMMUTE_ROUTE_ID: PERSON_2_route
+
+  PERSON_1_COMMUTE_TO_ID: PERSON_1_travel
+  PERSON_2_COMMUTE_TO_ID: PERSON_2_travel
+
+  PERSON_1_LOCATION_ID: PERSON_1_location
+  PERSON_2_LOCATION_ID: PERSON_2_location

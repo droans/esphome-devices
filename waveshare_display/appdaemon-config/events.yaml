@@ -1,0 +1,38 @@
+module: events
+class: CalendarEvents
+update_interval: 240
+events:
+  sensors:
+    - name: Michael
+      sensors:
+        - sensor.ical_personal_calendar_event_0
+        - sensor.ical_personal_calendar_event_1
+        - sensor.ical_personal_calendar_event_2
+        - sensor.ical_personal_calendar_event_3
+        - sensor.ical_personal_calendar_event_4
+        - sensor.ical_personal_calendar_event_5
+        - sensor.ical_personal_calendar_event_6
+        - sensor.ical_personal_calendar_event_7
+    - name: Family
+      sensors:
+        - sensor.ical_family_calendar_event_0
+        - sensor.ical_family_calendar_event_1
+        - sensor.ical_family_calendar_event_2
+        - sensor.ical_family_calendar_event_3
+        - sensor.ical_family_calendar_event_4
+        - sensor.ical_family_calendar_event_5
+        - sensor.ical_family_calendar_event_6
+        - sensor.ical_family_calendar_event_7
+        
+  attributes:
+    name: summary
+    start: start
+    end: end
+logging:
+  log_level: 10
+  default_level: 20
+
+updated_sensors:
+  name_template: 'sensor.calendar_event_{id}'
+  total_sensors: 5
+  trim: 26

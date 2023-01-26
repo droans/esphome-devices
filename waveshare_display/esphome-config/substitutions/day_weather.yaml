@@ -1,0 +1,74 @@
+substitutions:
+  DAY_0_ENTITY: sensor.forecast_day_0
+  DAY_1_ENTITY: sensor.forecast_day_1
+  DAY_2_ENTITY: sensor.forecast_day_2
+  DAY_3_ENTITY: sensor.forecast_day_3
+  DAY_4_ENTITY: sensor.forecast_day_4
+
+  DAYS_DATE_ATTR: day
+  DAYS_CONDITIONS_ATTR: condition
+
+  DAYS_Y_POSITION_ENTITY: sensor.forecast_day_y_positions
+  DAY_0_HIGH_Y_ATTR: day_0_high
+  DAY_0_LOW_Y_ATTR: day_0_low
+  DAY_1_HIGH_Y_ATTR: day_1_high
+  DAY_2_HIGH_Y_ATTR: day_2_high
+  DAY_3_HIGH_Y_ATTR: day_3_high
+  DAY_4_HIGH_Y_ATTR: day_4_high
+
+  DAYS_LOW_TEMP_ATTR: low
+  DAY_1_LOW_Y_ATTR: day_1_low
+  DAY_2_LOW_Y_ATTR: day_2_low
+  DAY_3_LOW_Y_ATTR: day_3_low
+  DAY_4_LOW_Y_ATTR: day_4_low
+
+  F_MIN_TEMP_ATTR: f_min
+  F_MAX_TEMP_ATTR: f_max
+
+  Y_MIN_TEMP_ATTR: y_min
+  Y_MAX_TEMP_ATTR: y_max
+
+  ##############################################################
+
+  F_MIN_TEMP_ID: weather_temperature_day_temp_min
+  F_MAX_TEMP_ID: weather_temperature_day_temp_max
+
+  
+  DAY_0_HIGH_TEMP_ID: weather_temperature_high_day_0
+  DAY_1_HIGH_TEMP_ID: weather_temperature_high_day_1
+  DAY_2_HIGH_TEMP_ID: weather_temperature_high_day_2
+  DAY_3_HIGH_TEMP_ID: weather_temperature_high_day_3
+  DAY_4_HIGH_TEMP_ID: weather_temperature_high_day_4
+
+  DAY_0_LOW_TEMP_ID: weather_temperature_low_day_0
+  DAY_1_LOW_TEMP_ID: weather_temperature_low_day_1
+  DAY_2_LOW_TEMP_ID: weather_temperature_low_day_2
+  DAY_3_LOW_TEMP_ID: weather_temperature_low_day_3
+  DAY_4_LOW_TEMP_ID: weather_temperature_low_day_4
+
+  DAY_0_DAY_ID: weather_day_0
+  DAY_1_DAY_ID: weather_day_1
+  DAY_2_DAY_ID: weather_day_2
+  DAY_3_DAY_ID: weather_day_3
+  DAY_4_DAY_ID: weather_day_4
+
+  DAY_0_CONDITION_ID: condition_day_0
+  DAY_1_CONDITION_ID: condition_day_1
+  DAY_2_CONDITION_ID: condition_day_2
+  DAY_3_CONDITION_ID: condition_day_3
+  DAY_4_CONDITION_ID: condition_day_4
+
+
+  Y_MAX_TEMP_ID: weather_temperature_day_y_max
+  DAY_0_HIGH_Y_ID: weather_temperature_y_0
+  DAY_1_HIGH_Y_ID: weather_temperature_y_2
+  DAY_2_HIGH_Y_ID: weather_temperature_y_4
+  DAY_3_HIGH_Y_ID: weather_temperature_y_6
+  DAY_4_HIGH_Y_ID: weather_temperature_y_8
+
+  Y_MIN_TEMP_ID: weather_temperature_day_y_min
+  DAY_0_LOW_Y_ID: weather_temperature_y_1
+  DAY_1_LOW_Y_ID: weather_temperature_y_3
+  DAY_2_LOW_Y_ID: weather_temperature_y_5
+  DAY_3_LOW_Y_ID: weather_temperature_y_7
+  DAY_4_LOW_Y_ID: weather_temperature_y_9

@@ -1,0 +1,8 @@
+substitutions:
+  IP_ADDRESS: 10.10.1.1
+  GATEWAY_IP: 10.10.1.1
+  SUBNET: 255.255.255.0
+  DNS_1_IP: 10.10.1.1
+
+  AP_SSID: ${DEVICE_NAME} Setup
+  AP_PASSWORD: change-me-please
