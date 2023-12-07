@@ -6,17 +6,3 @@ substitutions:
   MDI_FONT_DIR: '/config/waveshare_eink/upload/fonts/icons/materialdesignicons-webfont_latest.ttf'
   G_SANS_REG_FONT_DIR: '/config/shared/fonts/google/GoogleSans-Regular.ttf'
   G_SANS_BOLD_FONT_DIR: '/config/shared/fonts/google/GoogleSans-Bold.ttf'
-
-  MDI_FONT_SIZE_LG: '48'
-  MDI_FONT_SIZE_MED: '36'
-  MDI_FONT_SIZE_SM: '24'
-
-  G_SANS_REG_SIZE_LG: '30'
-  G_SANS_REG_SIZE_MED: '24'
-  G_SANS_REG_SIZE_SM: '18'
-
-  G_SANS_BOLD_SIZE_XL: '108'
-  G_SANS_BOLD_SIZE_LG: '48'
-  G_SANS_BOLD_SIZE_MED: '36'
-  G_SANS_BOLD_SIZE_SM_MED: '24'
-  G_SANS_BOLD_SIZE_SM: '18'

@@ -49,7 +49,7 @@ font:
 
   - file: ${MDI_FONT_DIR}
     id: font_mdi_medium_large
-    size: ${MDI_FONT_SIZE_LG}
+    size: 48
     glyphs: &mdi-weather-glyphs
       - "\U000F0590" # mdi-weather-cloudy
       - "\U000F0F2F" # mdi-weather-cloudy-alert
@@ -89,12 +89,12 @@ font:
 
   - file: ${MDI_FONT_DIR}
     id: font_mdi_medium
-    size: ${MDI_FONT_SIZE_MED}
+    size: 36
     glyphs: *mdi-weather-glyphs
 
   - file: ${MDI_FONT_DIR}
     id: font_mdi_small
-    size: ${MDI_FONT_SIZE_SM}
+    size: 24
     glyphs: *mdi-weather-glyphs
 
   ############################
@@ -105,15 +105,15 @@ font:
   ############################
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_large
-    size: ${G_SANS_REG_SIZE_LG}
+    size: 30
 
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_medium
-    size: ${G_SANS_REG_SIZE_MED}
+    size: 24
 
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_small
-    size: ${G_SANS_REG_SIZE_SM}
+    size: 18
 
   ############################
   ##                        ##
@@ -124,20 +124,20 @@ font:
 
   - file: ${G_SANS_BOLD_FONT_DIR}
     id: font_google_bold_x_large
-    size: ${G_SANS_BOLD_SIZE_XL}
+    size: 108
 
   - file: ${G_SANS_BOLD_FONT_DIR}
     id: font_google_bold_large
-    size: ${G_SANS_BOLD_SIZE_LG}
+    size: 48
 
   - file: ${G_SANS_BOLD_FONT_DIR}
     id: font_google_bold_medium
-    size: ${G_SANS_BOLD_SIZE_MED}
+    size: 36
 
   - file: ${G_SANS_BOLD_FONT_DIR}
     id: font_google_bold_small_medium
-    size: ${G_SANS_BOLD_SIZE_SM_MED}
+    size: 24
 
   - file: ${G_SANS_BOLD_FONT_DIR}
     id: font_google_bold_small
-    size: ${G_SANS_BOLD_SIZE_SM}
+    size: 18
