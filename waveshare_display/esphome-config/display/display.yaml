@@ -65,7 +65,7 @@ display:
     rotation: ${ROTATION}
     pages: 
       - id: ${PAGE_1_NAME}
-        <<: !include pages/page1.yaml
+        <<: !include pages/calendar.yaml
       - id: ${PAGE_2_NAME}
         <<: !include pages/weather.yaml
 
