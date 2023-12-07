@@ -69,6 +69,10 @@ font:
   ############################
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_large
+    size: 36
+
+  - file: ${G_SANS_REG_FONT_DIR}
+    id: font_google_regular_med_large
     size: 30
 
   - file: ${G_SANS_REG_FONT_DIR}
