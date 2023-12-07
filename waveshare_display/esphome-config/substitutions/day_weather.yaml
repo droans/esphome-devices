@@ -22,8 +22,5 @@ substitutions:
   DAY_3_LOW_Y_ATTR: day_3_low
   DAY_4_LOW_Y_ATTR: day_4_low
 
-  F_MIN_TEMP_ATTR: f_min
-  F_MAX_TEMP_ATTR: f_max
-
   Y_MIN_TEMP_ATTR: y_min
   Y_MAX_TEMP_ATTR: y_max

@@ -118,16 +118,6 @@ sensor:
     attribute: ${DAY_4_LOW_Y_ATTR}
 
   - platform: homeassistant
-    id: ${F_MIN_TEMP_ID}
-    entity_id: ${DAYS_Y_POSITION_ENTITY}
-    attribute: ${F_MIN_TEMP_ATTR}
-
-  - platform: homeassistant
-    id: ${F_MAX_TEMP_ID}
-    entity_id: ${DAYS_Y_POSITION_ENTITY}
-    attribute: ${F_MAX_TEMP_ATTR}
-
-  - platform: homeassistant
     id: weather_temperature_day_y_min
     entity_id: ${DAYS_Y_POSITION_ENTITY}
     attribute: ${Y_MIN_TEMP_ATTR}
