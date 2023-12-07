@@ -9,14 +9,7 @@ script:
     mode: ${UPDATE_SCRIPT_MODE}
     then: 
       - delay: ${REFRESH_DELAY}
-      - if: 
-          condition:
-            display.is_displaying_page: ${PAGE_2_NAME}
-          then:
-            - display.page.show_previous: ${DISPLAY_NAME}
-          else:
-            - display.page.show_next: ${DISPLAY_NAME}
-      - component.update: ${DISPLAY_NAME}
+      - script.execute: page_next
       - script.execute: update_display
 
   # First refresh of display after being plugged in.
