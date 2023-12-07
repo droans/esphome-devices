@@ -1,0 +1,394 @@
+#################################################################################################################
+#
+# Find and replace the following entities:
+# * weather.HOME: Weather conditions for current location.
+# You will also need to add the iCal Calendar custom component.
+#################################################################################################################
+template:
+  - trigger:
+      - platform: time_pattern
+        minutes: /5
+      - platform: state
+        entity_id:
+          - weather.HOME
+    action:
+      - service: weather.get_forecasts
+        data:
+          type: hourly
+        target:
+          entity_id: weather.HOME
+        response_variable: forecast_hourly
+      - service: weather.get_forecasts
+        data:
+          type: daily
+        target:
+          entity_id: weather.HOME
+        response_variable: forecast_daily
+    sensor:
+      - name: Hourly Forecast 1
+        unique_id: new_hourly_forecast_1
+        state: >-
+          {% set hr = 2 %}
+          {% set result = forecast_hourly['weather.HOME']['forecast'][hr].temperature %}
+          {{ result }}
+        attributes:
+          condition: >-
+            {% set hr = 2 %}
+            {% set result = forecast_hourly['weather.HOME']['forecast'][hr].condition %}
+            {{ result }}
+          timestamp: >-
+            {% set hr = 2 %}
+            {% set dt = forecast_hourly['weather.HOME']['forecast'][hr].datetime %}
+            {% set dt = dt | as_datetime | as_local %}
+            {% set result = dt.strftime('%-I:%M %p') | default(now()) %}
+            {{ result }}
+      - name: Hourly Forecast 2
+        unique_id: new_hourly_forecast_2
+        state: >-
+          {% set hr = 4 %}
+          {% set result = forecast_hourly['weather.HOME']['forecast'][hr].temperature %}
+          {{ result }}
+        attributes:
+          condition: >-
+            {% set hr = 4 %}
+            {% set result = forecast_hourly['weather.HOME']['forecast'][hr].condition %}
+            {{ result }}
+          timestamp: >-
+            {% set hr = 4 %}
+            {% set dt = forecast_hourly['weather.HOME']['forecast'][hr].datetime %}
+            {% set dt = dt | as_datetime | as_local %}
+            {% set result = dt.strftime('%-I:%M %p') | default(now()) %}
+            {{ result }}
+      - name: Hourly Forecast 3
+        unique_id: new_hourly_forecast_3
+        state: >-
+          {% set hr = 6 %}
+          {% set result = forecast_hourly['weather.HOME']['forecast'][hr].temperature %}
+          {{ result }}
+        attributes:
+          condition: >-
+            {% set hr = 6 %}
+            {% set result = forecast_hourly['weather.HOME']['forecast'][hr].condition %}
+            {{ result }}
+          timestamp: >-
+            {% set hr = 6 %}
+            {% set dt = forecast_hourly['weather.HOME']['forecast'][hr].datetime %}
+            {% set dt = dt | as_datetime | as_local %}
+            {% set result = dt.strftime('%-I:%M %p') | default(now()) %}
+            {{ result }}
+      - name: Hourly Forecast 4
+        unique_id: new_hourly_forecast_4
+        state: >-
+          {% set hr = 8 %}
+          {% set result = forecast_hourly['weather.HOME']['forecast'][hr].temperature %}
+          {{ result }}
+        attributes:
+          condition: >-
+            {% set hr = 8 %}
+            {% set result = forecast_hourly['weather.HOME']['forecast'][hr].condition %}
+            {{ result }}
+          timestamp: >-
+            {% set hr = 8 %}
+            {% set dt = forecast_hourly['weather.HOME']['forecast'][hr].datetime %}
+            {% set dt = dt | as_datetime | as_local %}
+            {% set result = dt.strftime('%-I:%M %p') | default(now()) %}
+            {{ result }}
+      - name: Daily Forecast 0
+        unique_id: daily_forecast_0
+        state: >-
+          {% set day = 1 %}
+          {% set result = forecast_daily['weather.HOME']['forecast'][day].temperature %}
+          {{ result }}
+        attributes:
+          condition: >-
+            {% set day = 1 %}
+            {% set result = forecast_daily['weather.HOME']['forecast'][day].condition %}
+            {{ result }}
+          low: >-
+            {% set day = 1 %}
+            {% set result = forecast_daily['weather.HOME']['forecast'][day].templow %}
+            {{ result }}
+          day: >-
+            {% set result = 'Tomorrow' %}
+            {{ result }}
+      - name: Daily Forecast 1
+        unique_id: daily_forecast_1
+        state: >-
+          {% set day = 2 %}
+          {% set result = forecast_daily['weather.HOME']['forecast'][day].temperature %}
+          {{ result }}
+        attributes:
+          condition: >-
+            {% set day = 2 %}
+            {% set result = forecast_daily['weather.HOME']['forecast'][day].condition %}
+            {{ result }}
+          low: >-
+            {% set day = 2 %}
+            {% set result = forecast_daily['weather.HOME']['forecast'][day].templow %}
+            {{ result }}
+          day: >-
+            {% set day = 2 %}
+            {% set dt = forecast_daily['weather.HOME']['forecast'][day].datetime %}
+            {% set dt = dt | as_datetime | as_local %}
+            {% set result = dt.strftime('%a') | default('') %}
+            {{ result }}
+      - name: Daily Forecast 2
+        unique_id: daily_forecast_2
+        state: >-
+          {% set day = 3 %}
+          {% set result = forecast_daily['weather.HOME']['forecast'][day].temperature %}
+          {{ result }}
+        attributes:
+          condition: >-
+            {% set day = 3 %}
+            {% set result = forecast_daily['weather.HOME']['forecast'][day].condition %}
+            {{ result }}
+          low: >-
+            {% set day = 3 %}
+            {% set result = forecast_daily['weather.HOME']['forecast'][day].templow %}
+            {{ result }}
+          day: >-
+            {% set day = 3 %}
+            {% set dt = forecast_daily['weather.HOME']['forecast'][day].datetime %}
+            {% set dt = dt | as_datetime | as_local %}
+            {% set result = dt.strftime('%a') | default('') %}
+            {{ result }}
+      - name: Daily Forecast 3
+        unique_id: daily_forecast_3
+        state: >-
+          {% set day = 4 %}
+          {% set result = forecast_daily['weather.HOME']['forecast'][day].temperature %}
+          {{ result }}
+        attributes:
+          condition: >-
+            {% set day = 4 %}
+            {% set result = forecast_daily['weather.HOME']['forecast'][day].condition %}
+            {{ result }}
+          low: >-
+            {% set day = 4 %}
+            {% set result = forecast_daily['weather.HOME']['forecast'][day].templow %}
+            {{ result }}
+          day: >-
+            {% set day = 4 %}
+            {% set dt = forecast_daily['weather.HOME']['forecast'][day].datetime %}
+            {% set dt = dt | as_datetime | as_local %}
+            {% set result = dt.strftime('%a') | default('') %}
+            {{ result }}
+      - name: Daily Forecast 4
+        unique_id: daily_forecast_4
+        state: >-
+          {% set day = 5 %}
+          {% set result = forecast_daily['weather.HOME']['forecast'][day].temperature %}
+          {{ result }}
+        attributes:
+          condition: >-
+            {% set day = 5 %}
+            {% set result = forecast_daily['weather.HOME']['forecast'][day].condition %}
+            {{ result }}
+          low: >-
+            {% set day = 5 %}
+            {% set result = forecast_daily['weather.HOME']['forecast'][day].templow %}
+            {{ result }}
+          day: >-
+            {% set day = 5 %}
+            {% set dt = forecast_daily['weather.HOME']['forecast'][day].datetime %}
+            {% set dt = dt | as_datetime | as_local %}
+            {% set result = dt.strftime('%a') | default('') %}
+            {{ result }}
+
+  - sensor:
+    - name: Forecast Day X Positions
+      unique_id: forecast_day_x_positions
+      state: "OK"
+      attributes:       
+        forecasts: >
+          {% set forecasts = [
+              states('sensor.daily_forecast_0') | int(0),
+              state_attr('sensor.daily_forecast_0','low') | int(0),
+              states('sensor.daily_forecast_1') | int(0),
+              state_attr('sensor.daily_forecast_1','low') | int(0),
+              states('sensor.daily_forecast_2') | int(0),
+              state_attr('sensor.daily_forecast_2','low') | int(0),
+              states('sensor.daily_forecast_3') | int(0),
+              state_attr('sensor.daily_forecast_3','low') | int(0),
+              states('sensor.daily_forecast_4') | int(0),
+              state_attr('sensor.daily_forecast_4','low') | int(0)
+            ]
+          %}
+          {{ forecasts }}
+        f_min: >
+          {% set f = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% if f is not none %}
+            {% set f_min = state_attr('sensor.forecast_day_x_positions','forecasts') | min %}
+            {% set f_min = (((f_min - 3) / 5) | round(0,'floor')) * 5 %}
+            {{ f_min }}
+          {% else %}
+            {{ none }}
+          {% endif %}
+        f_max: >
+          {% set f = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% if f is not none %}
+            {% set f_max = state_attr('sensor.forecast_day_x_positions','forecasts') | max %}
+            {% set f_max = (((f_max + 3) / 5) | round(0,'ceil')) * 5 %}
+            {{ f_max }}
+          {% else %}
+            {{ none }}
+          {% endif %}
+        y_min: '400'
+        y_max: '755'
+        multiplier: >
+          {% set y_diff = (state_attr('sensor.forecast_day_x_positions','y_max') | int(755)) - (state_attr('sensor.forecast_day_x_positions','y_min') | int(400)) %}
+          {% set f_max = state_attr('sensor.forecast_day_x_positions','f_max') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% if f_max is not none and f_min is not none %}
+            {% set f_diff = (state_attr('sensor.forecast_day_x_positions','f_max') | int) - (state_attr('sensor.forecast_day_x_positions','f_min') | int) %}
+            {% set result = y_diff / f_diff %}
+          {% else %}
+            {% set result = none %}
+          {% endif %}
+          {{ result }}
+        day_0_high: >
+          {% set day = 0 %}
+          {% set y_end = state_attr('sensor.forecast_day_x_positions','y_max') | int(755) %}
+          {% set multiplier = state_attr('sensor.forecast_day_x_positions','multiplier') %}
+          {% set forecasts = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% if y_end is none or multiplier is none or forecasts is none or f_min is none %}
+            {% set result = 0 %}
+          {% else %}
+            {% set forecast = max(state_attr('sensor.forecast_day_x_positions','forecasts')[day*2], state_attr('sensor.forecast_day_x_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+            {% set result = (y_end - (multiplier * (forecast - f_min))) | int %}
+          {% endif %}
+          {{ result }}
+        day_0_low: >
+          {% set day = 0 %}
+          {% set y_end = state_attr('sensor.forecast_day_x_positions','y_max') | int(755) %}
+          {% set multiplier = state_attr('sensor.forecast_day_x_positions','multiplier') %}
+          {% set forecasts = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% set day_max = state_attr('sensor.forecast_day_x_positions','day_' + (day | string) + '_high') %}
+          {% if y_end is none or multiplier is none or forecasts is none or f_min is none or day_max is none %}
+            {% set result = 0 %}
+          {% else %}
+            {% set forecast = min(state_attr('sensor.forecast_day_x_positions','forecasts')[day*2], state_attr('sensor.forecast_day_x_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+            {% set result = ((y_end - (multiplier * (forecast - f_min))) - day_max) | int %}
+          {% endif %}       
+          {{ result }}
+        day_1_high: >
+          {% set day = 1 %}
+          {% set y_end = state_attr('sensor.forecast_day_x_positions','y_max') | int(755) %}
+          {% set multiplier = state_attr('sensor.forecast_day_x_positions','multiplier') %}
+          {% set forecasts = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% if y_end is none or multiplier is none or forecasts is none or f_min is none %}
+            {% set result = 0 %}
+          {% else %}
+            {% set forecast = max(state_attr('sensor.forecast_day_x_positions','forecasts')[day*2], state_attr('sensor.forecast_day_x_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+            {% set result = (y_end - (multiplier * (forecast - f_min))) | int %}
+          {% endif %}
+          {{ result }}
+        day_1_low: >
+          {% set day = 1 %}
+          {% set y_end = state_attr('sensor.forecast_day_x_positions','y_max') | int(755) %}
+          {% set multiplier = state_attr('sensor.forecast_day_x_positions','multiplier') %}
+          {% set forecasts = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% set day_max = state_attr('sensor.forecast_day_x_positions','day_' + (day | string) + '_high') %}
+          {% if y_end is none or multiplier is none or forecasts is none or f_min is none or day_max is none %}
+            {% set result = 0 %}
+          {% else %}
+          {% set forecast = min(state_attr('sensor.forecast_day_x_positions','forecasts')[day*2], state_attr('sensor.forecast_day_x_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+            {% set result = ((y_end - (multiplier * (forecast - f_min))) - day_max) | int %}
+          {% endif %}     
+          {{ result }}
+        day_2_high: >
+          {% set day = 2 %}
+          {% set y_end = state_attr('sensor.forecast_day_x_positions','y_max') | int(755) %}
+          {% set multiplier = state_attr('sensor.forecast_day_x_positions','multiplier') %}
+          {% set forecasts = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% if y_end is none or multiplier is none or forecasts is none or f_min is none %}
+            {% set result = 0 %}
+          {% else %}
+            {% set forecast = max(state_attr('sensor.forecast_day_x_positions','forecasts')[day*2], state_attr('sensor.forecast_day_x_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+            {% set result = (y_end - (multiplier * (forecast - f_min))) | int %}
+          {% endif %}
+          {{ result }}
+        day_2_low: >
+          {% set day = 2 %}
+          {% set y_end = state_attr('sensor.forecast_day_x_positions','y_max') | int(755) %}
+          {% set multiplier = state_attr('sensor.forecast_day_x_positions','multiplier') %}
+          {% set forecasts = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% set day_max = state_attr('sensor.forecast_day_x_positions','day_' + (day | string) + '_high') %}
+          {% if y_end is none or multiplier is none or forecasts is none or f_min is none or day_max is none %}
+            {% set result = 0 %}
+          {% else %}
+            {% set forecast = min(state_attr('sensor.forecast_day_x_positions','forecasts')[day*2], state_attr('sensor.forecast_day_x_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+            {% set result = ((y_end - (multiplier * (forecast - f_min))) - day_max) | int %}
+          {% endif %}        
+          {{ result }}
+        day_3_high: >
+          {% set day = 3 %}
+          {% set y_end = state_attr('sensor.forecast_day_x_positions','y_max') | int(755) %}
+          {% set multiplier = state_attr('sensor.forecast_day_x_positions','multiplier') %}
+          {% set forecasts = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% if y_end is none or multiplier is none or forecasts is none or f_min is none %}
+            {% set result = 0 %}
+          {% else %}
+            {% set forecast = max(state_attr('sensor.forecast_day_x_positions','forecasts')[day*2], state_attr('sensor.forecast_day_x_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+            {% set result = (y_end - (multiplier * (forecast - f_min))) | int %}
+          {% endif %}  
+          {{ result }}
+        day_3_low: >
+          {% set day = 3 %}
+          {% set y_end = state_attr('sensor.forecast_day_x_positions','y_max') | int(755) %}
+          {% set multiplier = state_attr('sensor.forecast_day_x_positions','multiplier') %}
+          {% set forecasts = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% set day_max = state_attr('sensor.forecast_day_x_positions','day_' + (day | string) + '_high') %}
+          {% if y_end is none or multiplier is none or forecasts is none or f_min is none or day_max is none %}
+            {% set result = 0 %}
+          {% else %}
+            {% set forecast = min(state_attr('sensor.forecast_day_x_positions','forecasts')[day*2], state_attr('sensor.forecast_day_x_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+            {% set result = ((y_end - (multiplier * (forecast - f_min))) - day_max) | int %}
+          {% endif %} 
+          {{ result }}
+        day_4_high: >
+          {% set day = 4 %}
+          {% set y_end = state_attr('sensor.forecast_day_x_positions','y_max') | int(755) %}
+          {% set multiplier = state_attr('sensor.forecast_day_x_positions','multiplier') %}
+          {% set forecasts = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% if y_end is none or multiplier is none or forecasts is none or f_min is none %}
+            {% set result = 0 %}
+          {% else %}
+            {% set forecast = max(state_attr('sensor.forecast_day_x_positions','forecasts')[day*2], state_attr('sensor.forecast_day_x_positions','forecasts')[day*2 + 1]) %}
+            {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+            {% set result = (y_end - (multiplier * (forecast - f_min))) | int %}
+          {% endif %}
+          {{ result }}
+        day_4_low: >
+          {% set day = 4 %}
+          {% set y_end = state_attr('sensor.forecast_day_x_positions','y_max') | int(755) %}
+          {% set multiplier = state_attr('sensor.forecast_day_x_positions','multiplier') %}
+          {% set forecasts = state_attr('sensor.forecast_day_x_positions','forecasts') %}
+          {% set f_min = state_attr('sensor.forecast_day_x_positions','f_min') %}
+          {% set day_max = state_attr('sensor.forecast_day_x_positions','day_' + (day | string) + '_high') %}
+          {% if y_end is none or multiplier is none or forecasts is none or f_min is none or day_max is none %}
+            {% set result = 0 %}
+          {% else %}
+            {% set forecast = min(state_attr('sensor.forecast_day_x_positions','forecasts')[day*2], state_attr('sensor.forecast_day_x_positions','forecasts')[day*2 + 1]) %}
+            {% set day_max = state_attr('sensor.forecast_day_x_positions','day_' + (day | string) + '_high') %}
+            {% set result = ((y_end - (multiplier * (forecast - f_min))) - day_max) | int %}
+          {% endif %}
+          {{ result }}

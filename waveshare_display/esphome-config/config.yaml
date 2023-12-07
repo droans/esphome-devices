@@ -39,7 +39,6 @@ packages:
   binary_sensors: !include sensors/binary_sensors.yaml
   sensors: !include sensors/sensors.yaml
   text_sensors: !include sensors/text_sensors.yaml
-
   calendar_subs: !include substitutions/calendar.yaml
   weather_day: !include substitutions/day_weather.yaml
   hour_weather: !include substitutions/hour_weather.yaml
@@ -48,6 +47,7 @@ packages:
   display_font_img_subs: !include substitutions/display_fonts_img.yaml
   esphome_subs: !include substitutions/esphome.yaml
   network_subs: !include substitutions/network.yaml
+  scripts: !include scripts.yaml
 
 switch:
   - platform: restart

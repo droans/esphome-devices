@@ -37,16 +37,6 @@ color:
     green: 0%
     blue: 0%
     white: 0%
-  - id: BLACK
-    red: 0%
-    green: 0%
-    blue: 0%
-    white: 0%
-  - id: WHITE
-    red: 0%
-    green: 0%
-    blue: 0%
-    white: 100%
 
 spi:
   clk_pin: ${CLOCK_PIN}
@@ -65,45 +55,8 @@ display:
     rotation: ${ROTATION}
     pages: 
       - id: ${PAGE_1_NAME}
-        <<: !include pages/page1.yaml
+        <<: !include pages/calendar.yaml
       - id: ${PAGE_2_NAME}
         <<: !include pages/weather.yaml
-
-script:
-    # Automatically update display after delay has passed. 
-    # By using a script and having the delay be the first
-    # action, we can ensure that the display waits two 
-    # minutes between any refresh (on boot, button press, refresh).
-    # If you would like to update the display outside of this script,
-    # add an action to execute this script at the end of your code.
-  - id: ${UPDATE_SCRIPT_NAME}
-    mode: ${UPDATE_SCRIPT_MODE}
-    then: 
-      - delay: ${REFRESH_DELAY}
-      - if: 
-          condition:
-            display.is_displaying_page: ${PAGE_2_NAME}
-          then:
-            - display.page.show_previous: ${DISPLAY_NAME}
-          else:
-            - display.page.show_next: ${DISPLAY_NAME}
-      - component.update: ${DISPLAY_NAME}
-      - script.execute: ${UPDATE_SCRIPT_NAME}
-
-  # First refresh of display after being plugged in.
-  # Will wait five seconds after an API connection
-  # to help improve the chances that data from the 
-  # HA sensors has come through.
-  - id: ${BOOT_SCRIPT_NAME}
-    mode: ${BOOT_SCRIPT_MODE}
-    then: 
-      - if:
-          condition:
-            api.connected:
-          then:
-            - delay: ${BOOT_SCRIPT_API_REFRESH_DELAY}
-            - component.update: ${DISPLAY_NAME}
-            - script.execute: ${UPDATE_SCRIPT_NAME}
-          else:
-            - delay: ${BOOT_SCRIPT_NO_API_DELAY}
-            - script.execute: ${BOOT_SCRIPT_NAME}
+      - id: ${PAGE_3_NAME}
+        <<: !include pages/baby.yaml

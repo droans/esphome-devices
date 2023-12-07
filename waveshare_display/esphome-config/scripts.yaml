@@ -1,0 +1,71 @@
+script:
+    # Automatically update display after delay has passed. 
+    # By using a script and having the delay be the first
+    # action, we can ensure that the display waits two 
+    # minutes between any refresh (on boot, button press, refresh).
+    # If you would like to update the display outside of this script,
+    # add an action to execute this script at the end of your code.
+  - id: update_display
+    mode: ${UPDATE_SCRIPT_MODE}
+    then: 
+      - delay: ${REFRESH_DELAY}
+      - script.execute: page_next
+      - script.execute: update_display
+
+  # First refresh of display after being plugged in.
+  # Will wait five seconds after an API connection
+  # to help improve the chances that data from the 
+  # HA sensors has come through.
+  - id: start_display
+    mode: ${BOOT_SCRIPT_MODE}
+    then: 
+      - if:
+          condition:
+            api.connected:
+          then:
+            - delay: ${BOOT_SCRIPT_API_REFRESH_DELAY}
+            - script.execute: refresh_screen
+          else:
+            - delay: ${BOOT_SCRIPT_NO_API_DELAY}
+            - script.execute: start_display
+  - id: refresh_screen
+    mode: restart
+    then:
+      - component.update: ${DISPLAY_NAME}
+      - script.execute: update_display
+  - id: page_next
+    mode: restart
+    then:
+      - if:
+          condition:
+            or:
+              - display.is_displaying_page: ${PAGE_1_NAME}
+              - display.is_displaying_page: ${PAGE_2_NAME}
+          then:
+            - display.page.show_next: ${DISPLAY_NAME}
+          else:
+            - display.page.show: ${PAGE_1_NAME}
+      - component.update: ${DISPLAY_NAME}
+      - script.execute: update_display
+
+  - id: page_previous
+    mode: restart
+    then:
+      - if:
+          condition:
+            or:
+              - display.is_displaying_page: ${PAGE_2_NAME}
+              - display.is_displaying_page: ${PAGE_3_NAME}
+          then:
+            - display.page.show_previous: ${DISPLAY_NAME}
+          else:
+            - display.page.show: ${PAGE_3_NAME}
+      - component.update: ${DISPLAY_NAME}
+      - script.execute: update_display
+  - id: page_select
+    parameters:
+      page_id: 'display::DisplayPage*'
+    then:
+      - display.page.show: !lambda return page_id;
+      - component.update: ${DISPLAY_NAME}
+      - script.execute: update_display

@@ -1,0 +1,24 @@
+#################################################################################################################
+#
+# Find and replace the following entities:
+# * person.PERSON_1: Device Tracker for Person 1
+# * person.PERSON_2: Device Tracker for Person 2
+# * sensor.PERSON_1_time_to_work: Commute tracker for person 1 from current location to work (Designed for Waze)
+# * sensor.PERSON_2_time_to_work: Commute tracker for person 2 from current location to work (Designed for Waze)
+# * sensor.PERSON_1_time_to_home: Commute tracker for person 1 from current location to home (Designed for Waze)
+# * sensor.PERSON_2_time_to_home: Commute tracker for person 2 from current location to home (Designed for Waze)
+# * weather.home: Weather conditions for current location. (Designed for Netatmo)
+# * weather.WEATHER_hourly: Hourly weather forecasts. (Designed for NWS)
+# * Nursery Air Quality Sensors:
+#     * sensor.nursery_particulate_matter_1_0um_concentration
+#     * sensor.nursery_particulate_matter_2_5um_concentration
+#     * sensor.nursery_particulate_matter_10_0um_concentration
+# You will also need to add the iCal Calendar custom component.
+#################################################################################################################
+template:
+  - sensor:
+    - name: Current Time
+      unique_id: cur_time
+      state: >-
+        {% set time_fmt = '%a %m/%d/%y %-I:%M %p' %}
+        {{ now().strftime(time_fmt)}}

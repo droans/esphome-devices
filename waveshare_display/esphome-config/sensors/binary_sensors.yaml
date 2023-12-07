@@ -13,15 +13,9 @@ binary_sensor:
       - invert
     on_press:
       then: 
-        - if: 
-            condition:
-              display.is_displaying_page: ${PAGE_2_NAME}
-            then:
-              - display.page.show_previous: ${DISPLAY_NAME}
-            else:
-              - display.page.show_next: ${DISPLAY_NAME}
-        - component.update: ${DISPLAY_NAME}
-        - script.execute: ${UPDATE_SCRIPT_NAME}
+        - script.execute:
+            id: page_select
+            page_id: !lambda return ${BUTTON_1_PAGE};
 
   - platform: gpio
     pin:
@@ -37,9 +31,9 @@ binary_sensor:
       - invert
     on_press:
       then:
-        - component.update: ${DISPLAY_NAME}
-        - script.execute: ${UPDATE_SCRIPT_NAME}
-        
+        - script.execute:
+            id: page_select
+            page_id: !lambda return ${BUTTON_2_PAGE};
   - platform: gpio
     pin:
       number: ${BUTTON_3_PIN}
@@ -54,12 +48,6 @@ binary_sensor:
       - invert
     on_press: 
       then: 
-        - if: 
-            condition:
-              display.is_displaying_page: ${PAGE_2_NAME}
-            then:
-              - display.page.show_previous: ${DISPLAY_NAME}
-            else:
-              - display.page.show_next: ${DISPLAY_NAME}
-        - component.update: ${DISPLAY_NAME}
-        - script.execute: ${UPDATE_SCRIPT_NAME}
+        - script.execute:
+            id: page_select
+            page_id: !lambda return ${BUTTON_3_PAGE};

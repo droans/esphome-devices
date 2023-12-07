@@ -1,0 +1,199 @@
+#################################################################################################################
+#
+# Find and replace the following entities:
+# * calendar.FAMILY_CALENDAR
+# * calendar.PERSONAL_CALENDAR
+# * PERSON_1: Name of Person 1, used in templates for creating event description
+# * PERSONAL_CALENDAR_NAME: Name to give personal calendar, used in template
+#
+#################################################################################################################
+template:
+  - trigger:
+    - platform: time_pattern
+      minutes: /5
+    - platform: state
+      entity_id:
+        - calendar.FAMILY_CALENDAR
+        - calendar.PERSONAL_CALENDAR
+      attribute: start_time
+    action:
+      - service: calendar.get_events
+        data:
+          start_date_time: >-
+            {% set result = now() %}
+            {{ result }}
+          end_date_time: >-
+            {% set result = now() + timedelta(days=30) %}
+            {{ result }}
+        target:
+          entity_id: 
+            - calendar.FAMILY_CALENDAR
+            - calendar.PERSONAL_CALENDAR
+        response_variable: cals
+    sensor:
+      - name: Calendar Events
+        unique_id: calendar_events
+        state: "OK"
+        attributes:
+          events: >-
+            {% set family_calendar = cals['calendar.FAMILY_CALENDAR'] %}
+            {% set personal_calendar = cals['calendar.PERSONAL_CALENDAR'] %}
+            {% set ns = namespace(results=[]) %}
+
+            {% for item in family_calendar.events %}
+              {% if (item.start | as_timestamp | as_datetime) > now() %}
+                {% set ns.results = ns.results + [{'summary': item.summary, 'start': item.start, 'calendar': 'Family'}] %}
+              {% endif %}
+            {% endfor %}
+            {% for item in personal_calendar.events %}
+              {% if (item.start | as_timestamp | as_datetime) > now() %}
+                {% set ns.results = ns.results + [{'summary': item.summary, 'start': item.start, 'calendar': 'PERSONAL_CALENDAR_NAME'}] %}
+              {% endif %}
+            {% endfor %}
+            {% set result = ns.results %}
+            {{ result }}
+  - trigger:
+    - platform: state
+      entity_id:
+        - sensor.calendar_events
+    sensor:
+      - name: Calendar Event 1
+        unique_id: cal_event_1
+        state: >-
+          {% set events = state_attr('sensor.calendar_events','events') %}
+          {% set cur_event = 0 %}
+          {% set event = events[cur_event] %}
+          {% if event.summary[:6] == 'PERSON_1' %}
+            {% set result = 'PERSON_1:' + event.summary[6:] %}
+          {% else %}
+            {% set result = event.calendar + ': ' + event.summary %}
+          {% endif %}
+          {% set result = result | trim %}
+          {% if result | length > 30 %}
+            {% set result = result[:26] + '...' %}
+          {% endif %}
+          {{ result }}
+        attributes:
+          message: >-
+            {% from 'tools.jinja' import friendly_time_until %}
+            {% set events = state_attr('sensor.calendar_events','events') %}
+            {% set cur_event = 0 %}
+            {% set event = events[cur_event] %}
+            {% set start = event.start %}
+            {% set start_ts = start | as_timestamp %}
+            {% set rel_str = friendly_time_until(start_ts) | trim %}
+            {% set dt_str = start_ts | timestamp_custom('%a %m/%d %-I:%M %p') %}
+            {% set result = rel_str + ' (' + dt_str + ')' %}
+            {{ result }}
+      - name: Calendar Event 2
+        unique_id: cal_event_2
+        state: >-
+          {% set events = state_attr('sensor.calendar_events','events') %}
+          {% set cur_event = 1 %}
+          {% set event = events[cur_event] %}
+          {% if event.summary[:6] == 'PERSON_1' %}
+            {% set result = 'PERSON_1:' + event.summary[6:] %}
+          {% else %}
+            {% set result = event.calendar + ': ' + event.summary %}
+          {% endif %}
+          {% set result = result | trim %}
+          {% if result | length > 30 %}
+            {% set result = result[:26] + '...' %}
+          {% endif %}
+          {{ result }}
+        attributes:
+          message: >-
+            {% from 'tools.jinja' import friendly_time_until %}
+            {% set events = state_attr('sensor.calendar_events','events') %}
+            {% set cur_event = 1 %}
+            {% set event = events[cur_event] %}
+            {% set start = event.start %}
+            {% set start_ts = start | as_timestamp %}
+            {% set rel_str = friendly_time_until(start_ts) | trim %}
+            {% set dt_str = start_ts | timestamp_custom('%a %m/%d %-I:%M %p') %}
+            {% set result = rel_str + ' (' + dt_str + ')' %}
+            {{ result }}
+      - name: Calendar Event 3
+        unique_id: cal_event_3
+        state: >-
+          {% set events = state_attr('sensor.calendar_events','events') %}
+          {% set cur_event = 2 %}
+          {% set event = events[cur_event] %}
+          {% if event.summary[:6] == 'PERSON_1' %}
+            {% set result = 'PERSON_1:' + event.summary[6:] %}
+          {% else %}
+            {% set result = event.calendar + ': ' + event.summary %}
+          {% endif %}
+          {% set result = result | trim %}
+          {% if result | length > 30 %}
+            {% set result = result[:26] + '...' %}
+          {% endif %}
+          {{ result }}
+        attributes:
+          message: >-
+            {% from 'tools.jinja' import friendly_time_until %}
+            {% set events = state_attr('sensor.calendar_events','events') %}
+            {% set cur_event = 2 %}
+            {% set event = events[cur_event] %}
+            {% set start = event.start %}
+            {% set start_ts = start | as_timestamp %}
+            {% set rel_str = friendly_time_until(start_ts) | trim %}
+            {% set dt_str = start_ts | timestamp_custom('%a %m/%d %-I:%M %p') %}
+            {% set result = rel_str + ' (' + dt_str + ')' %}
+            {{ result }}
+      - name: Calendar Event 4
+        unique_id: cal_event_4
+        state: >-
+          {% set events = state_attr('sensor.calendar_events','events') %}
+          {% set cur_event = 3 %}
+          {% set event = events[cur_event] %}
+          {% if event.summary[:6] == 'PERSON_1' %}
+            {% set result = 'PERSON_1:' + event.summary[6:] %}
+          {% else %}
+            {% set result = event.calendar + ': ' + event.summary %}
+          {% endif %}
+          {% set result = result | trim %}
+          {% if result | length > 30 %}
+            {% set result = result[:26] + '...' %}
+          {% endif %}
+          {{ result }}
+        attributes:
+          message: >-
+            {% from 'tools.jinja' import friendly_time_until %}
+            {% set events = state_attr('sensor.calendar_events','events') %}
+            {% set cur_event = 3 %}
+            {% set event = events[cur_event] %}
+            {% set start = event.start %}
+            {% set start_ts = start | as_timestamp %}
+            {% set rel_str = friendly_time_until(start_ts) | trim %}
+            {% set dt_str = start_ts | timestamp_custom('%a %m/%d %-I:%M %p') %}
+            {% set result = rel_str + ' (' + dt_str + ')' %}
+            {{ result }}
+      - name: Calendar Event 5
+        unique_id: cal_event_5
+        state: >-
+          {% set events = state_attr('sensor.calendar_events','events') %}
+          {% set cur_event = 4 %}
+          {% set event = events[cur_event] %}
+          {% if event.summary[:6] == 'PERSON_1' %}
+            {% set result = 'PERSON_1:' + event.summary[6:] %}
+          {% else %}
+            {% set result = event.calendar + ': ' + event.summary %}
+          {% endif %}
+          {% set result = result | trim %}
+          {% if result | length > 30 %}
+            {% set result = result[:26] + '...' %}
+          {% endif %}
+          {{ result }}
+        attributes:
+          message: >-
+            {% from 'tools.jinja' import friendly_time_until %}
+            {% set events = state_attr('sensor.calendar_events','events') %}
+            {% set cur_event = 4 %}
+            {% set event = events[cur_event] %}
+            {% set start = event.start %}
+            {% set start_ts = start | as_timestamp %}
+            {% set rel_str = friendly_time_until(start_ts) | trim %}
+            {% set dt_str = start_ts | timestamp_custom('%a %m/%d %-I:%M %p') %}
+            {% set result = rel_str + ' (' + dt_str + ')' %}
+            {{ result }}

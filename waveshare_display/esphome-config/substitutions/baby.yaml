@@ -1,0 +1,12 @@
+substitutions:
+  BABY_DAILY_FEEDS_COUNT_ENTITY: sensor.baby_daily_feeds
+  BABY_DAILY_CHANGES_COUNT_ENTITY: sensor.baby_daily_changes
+  NURSERY_TEMPERATURE_ENTITY: sensor.nursery_temperature
+  NURSERY_PM_ENTITY: sensor.nursery_total_particulate_concentration
+  NURSERY_CO2_ENTITY: sensor.nursery_co2_value
+  NURSERY_VOC_ENTITY: sensor.nursery_voc_index
+  BABY_LAST_FEED_TIME_ENTITY: sensor.baby_last_feed_time
+  BABY_LAST_CHANGE_TIME_ENTITY: sensor.baby_last_change_time
+  BABY_DAILY_FEED_DETAILS_ENTITY: sensor.baby_daily_feed_details
+  BABY_LAST_CHANGE_ENTITY: sensor.baby_last_change
+  BABY_DAILY_CHANGE_DETAILS_ENTITY: sensor.baby_daily_change_details

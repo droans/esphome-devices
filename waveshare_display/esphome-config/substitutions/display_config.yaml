@@ -18,6 +18,7 @@ substitutions:
   # Display pages
   PAGE_1_NAME: page1
   PAGE_2_NAME: page2
+  PAGE_3_NAME: page3
 
   # Display Scripts
   UPDATE_SCRIPT_NAME: update_display

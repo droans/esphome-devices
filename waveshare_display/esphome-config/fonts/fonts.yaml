@@ -5,8 +5,8 @@ font:
   ##                        ##
   ############################
   - file: ${MDI_FONT_DIR}
-    id: ${MDI_FONT_ID_LG}
-    size: ${MDI_FONT_SIZE_LG}
+    id: font_mdi_large
+    size: 96
     glyphs: &mdi-weather-glyphs
       - "\U000F0590" # mdi-weather-cloudy
       - "\U000F0F2F" # mdi-weather-cloudy-alert
@@ -38,20 +38,27 @@ font:
       - "\U000F0F38" # mdi-weather-tornado
       - "\U000F059D" # mdi-weather-windy
       - "\U000F059E" # mdi-weather-windy-variant
-      - "\U000F00ED" #Calendar
-      - "\U000F05A9" #Wifi
-      - "\U000F01B4" #Trash
-      - "\U000F044C" #Recycle
-      - "\U000F010B" #Car
+      - "\U000F00ED" # Calendar
+      - "\U000F05A9" # Wifi
+      - "\U000F01B4" # Trash
+      - "\U000F044C" # Recycle
+      - "\U000F010B" # Car
+      - "\U000F0F39" # Baby bottle
+      - "\U000F138B" # Changing Table
+      - "\U000F068F" # Baby Carriage
 
   - file: ${MDI_FONT_DIR}
-    id: ${MDI_FONT_ID_MED}
-    size: ${MDI_FONT_SIZE_MED}
+    id: font_mdi_medium_large
+    size: 48
+    glyphs: *mdi-weather-glyphs
+  - file: ${MDI_FONT_DIR}
+    id: font_mdi_medium
+    size: 36
     glyphs: *mdi-weather-glyphs
 
   - file: ${MDI_FONT_DIR}
-    id: ${MDI_FONT_ID_SM}
-    size: ${MDI_FONT_SIZE_SM}
+    id: font_mdi_small
+    size: 24
     glyphs: *mdi-weather-glyphs
 
   ############################
@@ -62,15 +69,101 @@ font:
   ############################
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_large
-    size: ${G_SANS_REG_SIZE_LG}
+    size: 36
+    glyphs: &glyphs
+    - ' '
+    - '!'
+    - '"'
+    - '%'
+    - (
+    - )
+    - +
+    - ','
+    - '-'
+    - .
+    - /
+    - '0'
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+    - '6'
+    - '7'
+    - '8'
+    - '9'
+    - ':'
+    - '='
+    - 'A'
+    - 'B'
+    - 'C'
+    - 'D'
+    - 'E'
+    - 'F'
+    - 'G'
+    - 'H'
+    - 'I'
+    - 'J'
+    - 'K'
+    - 'L'
+    - 'M'
+    - 'N'
+    - 'O'
+    - 'P'
+    - 'Q'
+    - 'R'
+    - 'S'
+    - 'T'
+    - 'U'
+    - 'V'
+    - 'W'
+    - 'X'
+    - 'Y'
+    - 'Z'
+    - '_'
+    - 'a'
+    - 'b'
+    - 'c'
+    - 'd'
+    - 'e'
+    - 'f'
+    - 'g'
+    - 'h'
+    - 'i'
+    - 'j'
+    - 'k'
+    - 'l'
+    - 'm'
+    - 'n'
+    - 'o'
+    - 'p'
+    - 'q'
+    - 'r'
+    - 's'
+    - 't'
+    - 'u'
+    - 'v'
+    - 'w'
+    - 'x'
+    - 'y'
+    - 'z'
+    - '°'
+    - "'"
+
+  - file: ${G_SANS_REG_FONT_DIR}
+    id: font_google_regular_med_large
+    size: 30
+    glyphs: *glyphs
 
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_medium
-    size: ${G_SANS_REG_SIZE_MED}
+    size: 24
+    glyphs: *glyphs
 
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_small
-    size: ${G_SANS_REG_SIZE_SM}
+    size: 18
+    glyphs: *glyphs
 
   ############################
   ##                        ##
@@ -80,21 +173,26 @@ font:
   ############################
 
   - file: ${G_SANS_BOLD_FONT_DIR}
-    id: ${G_SANS_BOLD_ID_XL}
-    size: ${G_SANS_BOLD_SIZE_XL}
+    id: font_google_bold_x_large
+    size: 108
+    glyphs: *glyphs
 
   - file: ${G_SANS_BOLD_FONT_DIR}
-    id: ${G_SANS_BOLD_ID_LG}
-    size: ${G_SANS_BOLD_SIZE_LG}
+    id: font_google_bold_large
+    size: 48
+    glyphs: *glyphs
 
   - file: ${G_SANS_BOLD_FONT_DIR}
-    id: ${G_SANS_BOLD_ID_MED}
-    size: ${G_SANS_BOLD_SIZE_MED}
+    id: font_google_bold_medium
+    size: 36
+    glyphs: *glyphs
 
   - file: ${G_SANS_BOLD_FONT_DIR}
-    id: ${G_SANS_BOLD_ID_SM_MED}
-    size: ${G_SANS_BOLD_SIZE_SM_MED}
+    id: font_google_bold_small_medium
+    size: 24
+    glyphs: *glyphs
 
   - file: ${G_SANS_BOLD_FONT_DIR}
-    id: ${G_SANS_BOLD_ID_SM}
-    size: ${G_SANS_BOLD_SIZE_SM}
+    id: font_google_bold_small
+    size: 18
+    glyphs: *glyphs
