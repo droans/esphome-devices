@@ -1,0 +1,121 @@
+#################################################################################################################
+#
+# Find and replace the following entities:
+# * sensor.PERSON_1_time_to_XXXX: Commute tracker for person 1 to work/home (Designed for Waze)
+# * sensor.PERSON_2_time_to_XXXX: Commute tracker for person 1 to work/home (Designed for Waze)
+# * PERSON_1: Name for person 1, used in both name and ID
+# * PERSON_2: Name for person 2, used in both name and ID
+# * person.PERSON_1: Device Tracker for Person 1
+# * person.PERSON_2: Device Tracker for Person 2
+#
+#################################################################################################################
+template:
+  - sensor:
+    - name: PERSON_1 Commute
+      unique_id: PERSON_1_commute
+      state: >- 
+        {% set work_commute = 'sensor.PERSON_1_time_to_work' %}
+        {% set home_commute = 'sensor.PERSON_1_time_to_home' %}
+
+        {% set to_home = states(home_commute) | int(0) %}
+        {% set to_work = states(work_commute) | int(0) %}
+
+        {% if to_home in (none, 'unavailable') %}
+          UNKNOWN
+        {% elif to_home >= 4 %}
+          {{ to_home }} MIN
+        {% else %}
+          {{ to_work }} MIN
+        {% endif %}
+      attributes:
+        travel: >
+          {% set work_commute = 'sensor.PERSON_1_time_to_work' %}
+          {% set home_commute = 'sensor.PERSON_1_time_to_home' %}
+
+          {% set to_home = states(home_commute) | int(0) %}
+          {% set to_work = states(work_commute) | int(0) %}
+
+          {% if to_home in (none, 'unavailable') %}
+            UNKNOWN
+          {% elif to_home >= 4 %}
+            TO HOME
+          {% else %}
+            TO WORK
+          {% endif %}
+
+        route: >
+          {% set work_commute = 'sensor.PERSON_1_time_to_work' %}
+          {% set home_commute = 'sensor.PERSON_1_time_to_home' %}
+
+          {% set to_home = states(home_commute) | int(0) %}
+          {% set to_work = states(work_commute) | int(0) %}
+
+          {% if states(home_commute) in (none, 'unavailable') or states(work_commute) in (none, 'unavailable') %}
+            N/A
+          {% elif states(home_commute) | int(0) >= 4 %}
+            Via {{ (state_attr(home_commute, 'route') | default("N/A   "))[5:] }}
+          {% else %}
+            Via {{ (state_attr(work_commute, 'route') | default("N/A   "))[5:] }}
+          {% endif %}
+        location: >
+          {% set loc = states('person.PERSON_1') %}
+          {% if loc == 'away' %}
+            Away
+          {% else %}
+            At {{ loc | title }}
+          {% endif %}
+      
+    - name: PERSON_2 Commute
+      unique_id: PERSON_2_commute
+      state: >- 
+          {% set work_commute = 'sensor.PERSON_2_time_to_work' %}
+          {% set home_commute = 'sensor.PERSON_2_time_to_home' %}
+
+          {% set to_home = states(home_commute) | int(0) %}
+          {% set to_work = states(work_commute) | int(0) %}
+
+          {% if to_home in (none, 'unavailable') %}
+            UNKNOWN
+          {% elif to_home >= 4 %}
+            {{ to_home }} MIN
+          {% else %}
+            {{ to_work }} MIN
+          {% endif %}
+
+      attribute_templates:
+        travel: >
+          {% set work_commute = 'sensor.PERSON_2_time_to_work' %}
+          {% set home_commute = 'sensor.PERSON_2_time_to_home' %}
+
+          {% set to_home = states(home_commute) | int(0) %}
+          {% set to_work = states(work_commute) | int(0) %}
+
+          {% if to_home in (none, 'unavailable') %}
+            UNKNOWN
+          {% elif to_home >= 4 %}
+            TO HOME
+          {% else %}
+            TO WORK
+          {% endif %}
+
+        route: >
+          {% set work_commute = 'sensor.PERSON_2_time_to_work' %}
+          {% set home_commute = 'sensor.PERSON_2_time_to_home' %}
+
+          {% set to_home = states(home_commute) | int(0) %}
+          {% set to_work = states(work_commute) | int(0) %}
+
+          {% if states(home_commute) in (none, 'unavailable') or states(work_commute) in (none, 'unavailable') %}
+            N/A
+          {% elif states(home_commute) | int(0) >= 4 %}
+            Via {{ (state_attr(home_commute, 'route') | default("N/A   "))[5:] }}
+          {% else %}
+            Via {{ (state_attr(work_commute, 'route') | default("N/A   "))[5:] }}
+          {% endif %}
+        location: >
+          {% set loc = states('person.PERSON_2') %}
+          {% if loc == 'away' %}
+            Away
+          {% else %}
+            At {{ loc | title }}
+          {% endif %}
