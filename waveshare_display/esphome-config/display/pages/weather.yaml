@@ -26,6 +26,7 @@ lambda: |-
       {"snowy-heavy", "\U000F0F36"},
       {"snowy-rainy", "\U000F067F"},
       {"sunny", "\U000F0599"},
+      {"exceptional", "\U000F0599"},
       {"sunny-alert", "\U000F0F37"},
       {"sunny-off", "\U000F14E4"},
       {"sunset", "\U000F059A"},
