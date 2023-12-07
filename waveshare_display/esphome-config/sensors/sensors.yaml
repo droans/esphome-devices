@@ -127,4 +127,32 @@ sensor:
     entity_id: ${DAYS_Y_POSITION_ENTITY}
     attribute: ${Y_MAX_TEMP_ATTR}
 
-    
+############################################################
+######################      BABY      ######################
+############################################################
+
+  - platform: homeassistant
+    entity_id: ${BABY_DAILY_FEEDS_COUNT_ENTITY}
+    id: daily_feed_ct
+    unit_of_measurement: 'bottles'
+
+  - platform: homeassistant
+    entity_id: ${BABY_DAILY_CHANGES_COUNT_ENTITY}
+    id: daily_changes_ct
+    unit_of_measurement: 'diapers'
+
+  - platform: homeassistant
+    entity_id: ${NURSERY_TEMPERATURE_ENTITY}
+    id: nursery_temp
+
+  - platform: homeassistant
+    entity_id: ${NURSERY_PM_ENTITY}
+    id: nursery_pm_concentration
+
+  - platform: homeassistant
+    entity_id: ${NURSERY_CO2_ENTITY}
+    id: nursery_co2
+
+  - platform: homeassistant
+    entity_id: ${NURSERY_VOC_ENTITY}
+    id: nursery_voc

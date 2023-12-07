@@ -58,6 +58,8 @@ display:
         <<: !include pages/calendar.yaml
       - id: ${PAGE_2_NAME}
         <<: !include pages/weather.yaml
+      - id: ${PAGE_3_NAME}
+        <<: !include pages/baby.yaml
 
 script:
     # Automatically update display after delay has passed. 

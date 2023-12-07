@@ -1,0 +1,79 @@
+lambda: |-
+  #include <string>
+
+      std::map<std::string, std::string> weather_icon_map
+        {
+          {"cloudy", "\U000F0590"},
+          {"cloudy-alert", "\U000F0F2F"},
+          {"cloudy-arrow-right", "\U000F0E6E"},
+          {"fog", "\U000F0591"},
+          {"hail", "\U000F0592"},
+          {"hazy", "\U000F0F30"},
+          {"hurricane", "\U000F0898"},
+          {"lightning", "\U000F0593"},
+          {"lightning-rainy", "\U000F067E"},
+          {"night", "\U000F0594"},
+          {"clear-night", "\U000F0594"},
+          {"night-partly-cloudy", "\U000F0F31"},
+          {"partlycloudy", "\U000F0595"},
+          {"partly-lightning", "\U000F0F32"},
+          {"partly-rainy", "\U000F0F33"},
+          {"partly-snowy", "\U000F0F34"},
+          {"partly-snowy-rainy", "\U000F0F35"},
+          {"pouring", "\U000F0596"},
+          {"rainy", "\U000F0597"},
+          {"snowy", "\U000F0598"},
+          {"snowy-heavy", "\U000F0F36"},
+          {"snowy-rainy", "\U000F067F"},
+          {"sunny", "\U000F0599"},
+          {"exceptional", "\U000F0599"},
+          {"sunny-alert", "\U000F0F37"},
+          {"sunny-off", "\U000F14E4"},
+          {"sunset", "\U000F059A"},
+          {"sunset-down", "\U000F059B"},
+          {"sunset-up", "\U000F059C"},
+          {"tornado", "\U000F0F38"},
+          {"windy", "\U000F059D"},
+          {"windy-variant", "\U000F059E"},
+          {"baby_bottle","\U000F0F39"},
+          {"baby_changing","\U000F138B"},
+        };
+      it.fill(COLOR_ON);
+      // Weather Section
+      it.printf(240, 5, id(font_medium_google_bold), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(current_time).state.c_str());
+
+      it.printf(255, 56, id(font_mdi_medium_large), COLOR_RED, TextAlign::TOP_LEFT, "%s", weather_icon_map[id(weather_condition_now).state.c_str()].c_str());
+      it.printf(245, 50, id(font_med_large_google_bold), COLOR_RED, TextAlign::TOP_RIGHT, "%2.0f°", id(weather_temperature).state);
+      
+      it.printf(240, 110, id(font_med_large_google_bold), COLOR_RED, TextAlign::TOP_CENTER, "%s", "BABY TEDDY");
+
+      it.printf(230, 170, id(font_medium_google_bold), Color::BLACK, TextAlign::TOP_CENTER, "%s", "Last");
+
+      it.printf(120, 195, id(font_mdi_medium_large), COLOR_RED, TextAlign::TOP_CENTER, "%s", weather_icon_map["baby_bottle"].c_str());
+      it.printf(350, 195, id(font_mdi_medium_large), COLOR_RED, TextAlign::TOP_CENTER, "%s", weather_icon_map["baby_changing"].c_str());
+
+      it.printf(120, 240, id(font_large_google_regular), COLOR_RED, TextAlign::TOP_CENTER, "%s", id(last_feed_rel).state.c_str());
+      it.printf(120, 280, id(font_small_med_google_regular), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(last_feed).state.c_str());
+      it.printf(120, 305, id(font_small_med_google_regular), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(last_feed_amt).state.c_str());
+
+      it.printf(350, 240, id(font_large_google_regular), COLOR_RED, TextAlign::TOP_CENTER, "%s", id(last_change_rel).state.c_str());
+      it.printf(350, 280, id(font_small_med_google_regular), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(last_change).state.c_str());
+      it.printf(350, 305, id(font_small_med_google_regular), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(last_change_type).state.c_str());
+
+      it.printf(240, 345, id(font_medium_google_bold), Color::BLACK, TextAlign::TOP_CENTER, "%s", "Today");
+      it.printf(120, 380, id(font_mdi_medium_large), COLOR_RED, TextAlign::TOP_CENTER, "%s", weather_icon_map["baby_bottle"].c_str());
+      it.printf(350, 380, id(font_mdi_medium_large), COLOR_RED, TextAlign::TOP_CENTER, "%s", weather_icon_map["baby_changing"].c_str());
+      
+      it.printf(120, 425, id(font_large_google_regular), COLOR_RED, TextAlign::TOP_CENTER, "%s", id(daily_feed_amount).state.c_str());
+      it.printf(120, 470, id(font_small_med_google_regular), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(daily_feed_count).state.c_str());
+
+      it.printf(350, 425, id(font_large_google_regular), COLOR_RED, TextAlign::TOP_CENTER, "%s", id(daily_change_count).state.c_str());
+      it.printf(350, 470, id(font_small_med_google_regular), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(daily_change_types).state.c_str());
+
+      it.printf(240, 505, id(font_medium_google_bold), Color::BLACK, TextAlign::TOP_CENTER, "%s", "Nursery");
+      
+      it.printf(120, 545, id(font_small_med_google_regular), Color::BLACK, TextAlign::TOP_CENTER, "Temp: %2.0f°", id(nursery_temp).state);
+      it.printf(350, 545, id(font_small_med_google_regular), Color::BLACK, TextAlign::TOP_CENTER, "VOC:  %2.0f", id(nursery_voc).state);
+      it.printf(120, 580, id(font_small_med_google_regular), Color::BLACK, TextAlign::TOP_CENTER, "CO2:  %2.0f PPM", id(nursery_co2).state);
+      it.printf(350, 580, id(font_small_med_google_regular), Color::BLACK, TextAlign::TOP_CENTER, "PM:  %2.0f", id(nursery_pm_concentration).state);
+      

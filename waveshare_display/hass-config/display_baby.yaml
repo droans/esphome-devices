@@ -1,0 +1,200 @@
+#################################################################################################################
+#
+# Find and replace the following entities:
+# * Nursery Air Quality Sensors:
+#     * sensor.nursery_particulate_matter_1_0um_concentration
+#     * sensor.nursery_particulate_matter_2_5um_concentration
+#     * sensor.nursery_particulate_matter_10_0um_concentration
+#
+# * Baby Buddy Sensors: 
+#     * BABY_BUDDY_URL: URL for Baby Buddy Instance
+#     * BABY_BUDDY_PORT: PORT for Baby Buddy Instance
+#     * sensor.BABY_last_feeding: Last Feed sensor from Baby Buddy
+#     * sensor.BABY_last_change: Last Change sensor from Baby Buddy
+# 
+# Requires Baby Buddy HACS integration. Use secret `baby_buddy_token` for API token.
+#
+#################################################################################################################
+template:
+  - sensor:
+      - name: Nursery Total Particulate Concentration
+        unique_id: nursery_pm_concentration
+        state: >-
+          {{ 
+            (states('sensor.nursery_particulate_matter_1_0um_concentration') | int(0)) +
+            (states('sensor.nursery_particulate_matter_2_5um_concentration') | int(0)) +
+            (states('sensor.nursery_particulate_matter_10_0um_concentration') | int(0)) 
+          }}
+        unit_of_measurement: µg/m³
+        icon: mdi:chemical-weapon
+  - sensor:
+    - name: Time Since Last Feeding
+      unique_id: time_since_feeding
+      state: >-
+        {% set time_state = state_attr('sensor.BABY_last_feeding','end') | as_timestamp %}
+        {% set result = time_state | timestamp_custom('%-I:%M %p')  %}
+        {{ result }}
+      attributes:
+        rel_time: >-
+          {% set time_state = state_attr('sensor.BABY_last_feeding','end') | as_timestamp %}
+          {% set rel_time = relative_time(time_state  | as_datetime) %}
+          {% set rel_time = rel_time.replace('minutes','mins') %}
+          {% set result = rel_time | string + ' ago' %}
+          {{ result }}
+        amount: >-
+          {% set amt = states('sensor.BABY_last_feeding') | int | string %}
+          {% set result = amt + ' mls' %}
+          {{ result }}
+    - name: Teddy Daily Feeding
+      unique_id: teddy_daily_feeding
+      state: "OK"
+      attributes:
+        amount: >-
+          {% set amt = states('sensor.daily_feeding_amount') | int | string %}
+          {% set result = amt + ' mls' %}
+          {{ result }}
+        count: >-
+          {% set ct = states('sensor.daily_feeding_count') | int | string %}
+          {% set result = ct + ' bottles' %}
+          {{ result }}
+    - name: Time Since Last Change
+      unique_id: time_since_change
+      state: >-
+        {% set time_state = states('sensor.BABY_last_change') | as_timestamp %}
+        {% set result = time_state | timestamp_custom('%-I:%M %p')  %}
+        {{ result }}
+      attributes:
+        rel_time: >-
+          {% set time_state = states('sensor.BABY_last_change') | as_timestamp %}
+          {% set rel_time = relative_time(time_state  | as_datetime) %}
+          {% set rel_time = rel_time.replace('minutes','mins') %}
+          {% set result = rel_time | string + ' ago' %}
+          {{ result }}
+    - name: Teddy Daily Changes
+      unique_id: teddy_daily_changes
+      state: "OK"
+      attributes:
+        count: >-
+          {% set amt = states('sensor.daily_changes') | int | string %}
+          {% set result = amt + ' diapers' %}
+          {{ result }}
+        types: >-
+          {% set wet = states('sensor.daily_wet_changes') | int | string %}
+          {% set solid = states('sensor.daily_solid_changes') | int | string %}
+          {% set result = wet + ' wet, ' + solid + ' solid' %}
+          {{ result }}
+
+sensor:
+  - platform: rest
+    name: Daily Feeding Count
+    unique_id: daily_feeding_count
+    resource: http://BABY_BUDDY_URL:BABY_BUDDY_PORT/api/feedings
+    headers:
+      Authorization: !secret baby_buddy_token
+    value_template: >
+      {% set data = value_json.results %}
+      {% set today =  now().date() %}
+      {% set ns = namespace(ct=0) %}
+      {% for item in data %}
+        {% set end = (item.end | as_datetime | as_local).date() %}
+        {% if end == today %}
+          {% set ns.ct = ns.ct + 1 %}
+        {% endif %}
+      {% endfor %}
+      {% set result = ns.ct %}
+      {{ result }}
+  - platform: rest
+    name: Daily Feeding Amount
+    unique_id: daily_feeding_amount
+    resource: http://BABY_BUDDY_URL:BABY_BUDDY_PORT/api/feedings
+    headers:
+      Authorization: !secret baby_buddy_token
+    value_template: >
+      {% set data = value_json.results %}
+      {% set today =  now().date() %}
+      {% set ns = namespace(amt=0) %}
+      {% for item in data %}
+        {% set end = (item.end | as_datetime | as_local).date() %}
+        {% if end == today and item.amount is number %}
+          {% set ns.amt = ns.amt + item.amount %}
+        {% endif %}
+      {% endfor %}
+      {% set result = ns.amt %}
+      {{ result }}
+    json_attributes:
+      - results
+  - platform: rest
+    name: Daily Feeding Count
+    unique_id: daily_feeding_count
+    resource: http://BABY_BUDDY_URL:BABY_BUDDY_PORT/api/feedings
+    headers:
+      Authorization: !secret baby_buddy_token
+    value_template: >
+      {% set data = value_json.results %}
+      {% set today =  now().date() %}
+      {% set ns = namespace(ct=0) %}
+      {% for item in data %}
+        {% set end = (item.end | as_datetime | as_local).date() %}
+        {% if end == today %}
+          {% set ns.ct = ns.ct + 1 %}
+        {% endif %}
+      {% endfor %}
+      {% set result = ns.ct %}
+      {{ result }}
+
+
+  - platform: rest
+    name: Daily Changes
+    unique_id: daily_changes
+    resource: http://BABY_BUDDY_URL:BABY_BUDDY_PORT/api/changes
+    headers:
+      Authorization: !secret baby_buddy_token
+    value_template: >
+      {% set data = value_json.results %}
+      {% set today =  now().date() %}
+      {% set ns = namespace(ct=0) %}
+      {% for item in data %}
+        {% set d = (item.time | as_datetime | as_local).date() %}
+        {% if d == today %}
+          {% set ns.ct = ns.ct + 1 %}
+        {% endif %}
+      {% endfor %}
+      {% set result = ns.ct %}
+      {{ result }}
+  - platform: rest
+    name: Daily Wet Changes
+    unique_id: daily_wet_changes
+    resource: http://BABY_BUDDY_URL:BABY_BUDDY_PORT/api/changes
+    headers:
+      Authorization: !secret baby_buddy_token
+    value_template: >
+      {% set data = value_json.results %}
+      {% set today =  now().date() %}
+      {% set ns = namespace(ct=0) %}
+      {% for item in data %}
+        {% set d = (item.time | as_datetime | as_local).date() %}
+        {% if d == today and item.wet %}
+          {% set ns.ct = ns.ct + 1 %}
+        {% endif %}
+      {% endfor %}
+      {% set result = ns.ct %}
+      {{ result }}
+
+  - platform: rest
+    name: Daily Solid Changes
+    unique_id: daily_solid_changes
+    resource: http://BABY_BUDDY_URL:BABY_BUDDY_PORT/api/changes
+    headers:
+      Authorization: !secret baby_buddy_token
+    value_template: >
+      {% set data = value_json.results %}
+      {% set today =  now().date() %}
+      {% set ns = namespace(ct=0) %}
+      {% for item in data %}
+        {% set d = (item.time | as_datetime | as_local).date() %}
+        {% if d == today and item.solid %}
+          {% set ns.ct = ns.ct + 1 %}
+        {% endif %}
+      {% endfor %}
+      {% set result = ns.ct %}
+      {{ result }}

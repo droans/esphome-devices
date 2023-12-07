@@ -184,3 +184,54 @@ text_sensor:
     entity_id: ${EVENT_3_ENTITY}
     attribute: ${EVENT_TIME_ATTR}
     id: cal_event_4_message
+
+############################################################
+######################      BABY      ######################
+############################################################
+  - platform: homeassistant
+    entity_id: ${BABY_LAST_FEED_TIME_ENTITY}
+    id: last_feed
+
+  - platform: homeassistant
+    entity_id: ${BABY_LAST_CHANGE_TIME_ENTITY}
+    id: last_change
+
+  - platform: homeassistant
+    entity_id: ${BABY_LAST_FEED_TIME_ENTITY}
+    attribute: rel_time
+    id: last_feed_rel
+
+  - platform: homeassistant
+    entity_id: ${BABY_LAST_FEED_TIME_ENTITY}
+    attribute: amount
+    id: last_feed_amt
+
+  - platform: homeassistant
+    entity_id: ${BABY_DAILY_FEED_AMOUNT_ENTITY}
+    attribute: amount
+    id: daily_feed_amount
+
+  - platform: homeassistant
+    entity_id: ${BABY_DAILY_FEED_AMOUNT_ENTITY}
+    attribute: count
+    id: daily_feed_count
+
+  - platform: homeassistant
+    entity_id: ${BABY_LAST_CHANGE_TIME_ENTITY}
+    attribute: rel_time
+    id: last_change_rel
+
+  - platform: homeassistant
+    entity_id: ${BABY_LAST_CHANGE_ENTITY}
+    attribute: descriptive
+    id: last_change_type
+
+  - platform: homeassistant
+    entity_id: ${BABY_DAILY_CHANGE_DETAILS_ENTITY}
+    attribute: count
+    id: daily_change_count
+
+  - platform: homeassistant
+    entity_id: ${BABY_DAILY_CHANGE_DETAILS_ENTITY}
+    attribute: types
+    id: daily_change_types
