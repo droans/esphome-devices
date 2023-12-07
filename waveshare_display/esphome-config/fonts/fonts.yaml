@@ -70,18 +70,100 @@ font:
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_large
     size: 36
+    glyphs: &glyphs
+    - ' '
+    - '!'
+    - '"'
+    - '%'
+    - (
+    - )
+    - +
+    - ','
+    - '-'
+    - .
+    - /
+    - '0'
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+    - '6'
+    - '7'
+    - '8'
+    - '9'
+    - ':'
+    - '='
+    - 'A'
+    - 'B'
+    - 'C'
+    - 'D'
+    - 'E'
+    - 'F'
+    - 'G'
+    - 'H'
+    - 'I'
+    - 'J'
+    - 'K'
+    - 'L'
+    - 'M'
+    - 'N'
+    - 'O'
+    - 'P'
+    - 'Q'
+    - 'R'
+    - 'S'
+    - 'T'
+    - 'U'
+    - 'V'
+    - 'W'
+    - 'X'
+    - 'Y'
+    - 'Z'
+    - '_'
+    - 'a'
+    - 'b'
+    - 'c'
+    - 'd'
+    - 'e'
+    - 'f'
+    - 'g'
+    - 'h'
+    - 'i'
+    - 'j'
+    - 'k'
+    - 'l'
+    - 'm'
+    - 'n'
+    - 'o'
+    - 'p'
+    - 'q'
+    - 'r'
+    - 's'
+    - 't'
+    - 'u'
+    - 'v'
+    - 'w'
+    - 'x'
+    - 'y'
+    - 'z'
+    - '°'
+    - "'"
 
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_med_large
     size: 30
+    glyphs: *glyphs
 
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_medium
     size: 24
+    glyphs: *glyphs
 
   - file: ${G_SANS_REG_FONT_DIR}
     id: font_google_regular_small
     size: 18
+    glyphs: *glyphs
 
   ############################
   ##                        ##
@@ -93,19 +175,24 @@ font:
   - file: ${G_SANS_BOLD_FONT_DIR}
     id: font_google_bold_x_large
     size: 108
+    glyphs: *glyphs
 
   - file: ${G_SANS_BOLD_FONT_DIR}
     id: font_google_bold_large
     size: 48
+    glyphs: *glyphs
 
   - file: ${G_SANS_BOLD_FONT_DIR}
     id: font_google_bold_medium
     size: 36
+    glyphs: *glyphs
 
   - file: ${G_SANS_BOLD_FONT_DIR}
     id: font_google_bold_small_medium
     size: 24
+    glyphs: *glyphs
 
   - file: ${G_SANS_BOLD_FONT_DIR}
     id: font_google_bold_small
     size: 18
+    glyphs: *glyphs
