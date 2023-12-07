@@ -116,17 +116,6 @@ lambda: |-
   it.printf(225, 588, id(font_google_regular_small), RED, TextAlign::TOP_RIGHT, id(PERSON_1_route).state.c_str());
   it.printf(255, 588, id(font_google_regular_small), RED, TextAlign::TOP_LEFT, id(PERSON_2_route).state.c_str());
 
-  //Boundary Lines
-  //it.filled_rectangle(0,330,480,4);	// Weather-Calendar Seperator
-  //it.filled_rectangle(320,330,4,240);	//Weather-Wifi QR Seperator
-  //it.filled_rectangle(0,570,480,4);	//Calendar-Commute Seperator
-  //it.filled_rectangle(245,651,4,149);	//Monica-Michael Commute Seperator
-  //it.filled_rectangle(6,50,474,4);	//Time Bottom Seperator
-  //it.filled_rectangle(6,0,474,5);		//Top Seperator
-  //it.filled_rectangle(0,790,480,800);	//Screen Bottom Seperator
-  //it.filled_rectangle(6,0,4,50);		//Time Left Seperator
-  //it.filled_rectangle(476,0,4,50);	//Time Right Seperator
-
   //WiFi QR Code
   it.printf(190, 680, id(font_mdi_large), RED, TextAlign::TOP_CENTER, "%s", various_icons["icon-wifi"].c_str());
   it.image(260, 680, id(wifi_qr));
