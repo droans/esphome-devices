@@ -36,3 +36,10 @@ script:
           else:
             - delay: ${BOOT_SCRIPT_NO_API_DELAY}
             - script.execute: start_display
+  - id: page_select
+    parameters:
+      page_id: 'display::DisplayPage*'
+    then:
+      - display.page.show: !lambda return page_id;
+      - component.update: ${DISPLAY_NAME}
+      - script.execute: update_display
