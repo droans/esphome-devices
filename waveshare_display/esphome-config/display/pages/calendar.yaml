@@ -57,23 +57,23 @@ lambda: |-
   auto event_4_color = RED;
 
   if (event_1.find(fam_lbl) != std::string::npos) {
-      event_1_color = BLACK;
+      event_1_color = Color::BLACK;
   }
 
   if (event_2.find(fam_lbl) != std::string::npos) {
-      event_2_color = BLACK;
+      event_2_color = Color::BLACK;
   }
 
   if (event_3.find(fam_lbl) != std::string::npos) {
-      event_3_color = BLACK;
+      event_3_color = Color::BLACK;
   }
 
   if (event_4.find(fam_lbl) != std::string::npos) {
-      event_4_color = BLACK;
+      event_4_color = Color::BLACK;
   }
 
   // Weather Section
-  it.printf(240, 5, id(${G_SANS_BOLD_ID_MED}), BLACK, TextAlign::TOP_CENTER, "%s", id(${CURRENT_TIME_ID}).state.c_str());
+  it.printf(240, 5, id(${G_SANS_BOLD_ID_MED}), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(${CURRENT_TIME_ID}).state.c_str());
 
   it.printf(255, 56, id(${MDI_FONT_ID_LG}), RED, TextAlign::TOP_LEFT, "%s", weather_icon_map[id(${CURRENT_CONDITIONS_ID}).state.c_str()].c_str());
   it.printf(245, 50, id(${G_SANS_BOLD_ID_XL}), RED, TextAlign::TOP_RIGHT, "%2.0f°", id(${CURRENT_TEMP_ID}).state);
@@ -98,20 +98,20 @@ lambda: |-
   it.printf(135, 400, id(${MDI_FONT_ID_LG}), RED, TextAlign::TOP_RIGHT, "%s", various_icons["vehicle"].c_str());
   it.print(260, 395, id(${G_SANS_BOLD_ID_XL}), RED, TextAlign::TOP_CENTER, "COMMUTE");
 
-  it.print(225, 456, id(${G_SANS_BOLD_ID_MED}), BLACK, TextAlign::TOP_RIGHT, "MONICA");
-  it.print(255, 456, id(${G_SANS_BOLD_ID_MED}), BLACK, TextAlign::TOP_LEFT, "MICHAEL");
+  it.print(225, 456, id(${G_SANS_BOLD_ID_MED}), Color::BLACK, TextAlign::TOP_RIGHT, "MONICA");
+  it.print(255, 456, id(${G_SANS_BOLD_ID_MED}), Color::BLACK, TextAlign::TOP_LEFT, "MICHAEL");
 
-  it.printf(225, 491, id(${G_SANS_BOLD_ID_MED}), BLACK, TextAlign::TOP_RIGHT, "%s", id(${PERSON_1_LOCATION_ID}).state.c_str());
-  it.printf(255, 491, id(${G_SANS_BOLD_ID_MED}), BLACK, TextAlign::TOP_LEFT, "%s", id(${PERSON_2_LOCATION_ID}).state.c_str());      
+  it.printf(225, 491, id(${G_SANS_BOLD_ID_MED}), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(${PERSON_1_LOCATION_ID}).state.c_str());
+  it.printf(255, 491, id(${G_SANS_BOLD_ID_MED}), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(${PERSON_2_LOCATION_ID}).state.c_str());      
 
-  it.printf(225, 531, id(${G_SANS_REG_ID_LG}), BLACK, TextAlign::TOP_RIGHT, "%s", id(${PERSON_1_COMMUTE_TIME_ID}).state.c_str());
-  it.printf(255, 531, id(${G_SANS_REG_ID_LG}), BLACK, TextAlign::TOP_LEFT, "%s", id(${PERSON_2_COMMUTE_TIME_ID}).state.c_str());
+  it.printf(225, 531, id(${G_SANS_REG_ID_LG}), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(${PERSON_1_COMMUTE_TIME_ID}).state.c_str());
+  it.printf(255, 531, id(${G_SANS_REG_ID_LG}), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(${PERSON_2_COMMUTE_TIME_ID}).state.c_str());
 
-  it.printf(225, 563, id(${G_SANS_REG_ID_MED}), BLACK, TextAlign::TOP_RIGHT, id(${PERSON_1_COMMUTE_TO_ID}).state.c_str());
-  it.printf(255, 563, id(${G_SANS_REG_ID_MED}), BLACK, TextAlign::TOP_LEFT, id(${PERSON_2_COMMUTE_TO_ID}).state.c_str());
+  it.printf(225, 563, id(${G_SANS_REG_ID_MED}), Color::BLACK, TextAlign::TOP_RIGHT, id(${PERSON_1_COMMUTE_TO_ID}).state.c_str());
+  it.printf(255, 563, id(${G_SANS_REG_ID_MED}), Color::BLACK, TextAlign::TOP_LEFT, id(${PERSON_2_COMMUTE_TO_ID}).state.c_str());
 
-  it.printf(225, 588, id(${G_SANS_REG_ID_SM}), BLACK, TextAlign::TOP_RIGHT, id(${PERSON_1_COMMUTE_ROUTE_ID}).state.c_str());
-  it.printf(255, 588, id(${G_SANS_REG_ID_SM}), BLACK, TextAlign::TOP_LEFT, id(${PERSON_2_COMMUTE_ROUTE_ID}).state.c_str());
+  it.printf(225, 588, id(${G_SANS_REG_ID_SM}), Color::BLACK, TextAlign::TOP_RIGHT, id(${PERSON_1_COMMUTE_ROUTE_ID}).state.c_str());
+  it.printf(255, 588, id(${G_SANS_REG_ID_SM}), Color::BLACK, TextAlign::TOP_LEFT, id(${PERSON_2_COMMUTE_ROUTE_ID}).state.c_str());
 
   //Boundary Lines
   //it.filled_rectangle(0,330,480,4);	// Weather-Calendar Seperator

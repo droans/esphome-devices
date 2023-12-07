@@ -37,16 +37,6 @@ color:
     green: 0%
     blue: 0%
     white: 0%
-  - id: BLACK
-    red: 0%
-    green: 0%
-    blue: 0%
-    white: 0%
-  - id: WHITE
-    red: 0%
-    green: 0%
-    blue: 0%
-    white: 100%
 
 spi:
   clk_pin: ${CLOCK_PIN}
