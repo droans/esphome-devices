@@ -79,27 +79,27 @@ lambda: |-
   it.printf(240, 5, id(font_google_bold_medium), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(current_time).state.c_str());
 
   it.printf(255, 56, id(font_mdi_medium_large), RED, TextAlign::TOP_LEFT, "%s", weather_icon_map[id(weather_condition_now).state.c_str()].c_str());
-  it.printf(245, 50, id(font_google_bold_x_large), RED, TextAlign::TOP_RIGHT, "%2.0f°", id(weather_temperature).state);
+  it.printf(245, 50, id(font_google_bold_large), RED, TextAlign::TOP_RIGHT, "%2.0f°", id(weather_temperature).state);
 
   // Event Section
   it.printf(130, 133, id(font_mdi_medium_large), RED, TextAlign::TOP_RIGHT, "%s", various_icons["calendar"].c_str());
-  it.printf(260, 125, id(font_google_bold_x_large), RED, TextAlign::TOP_CENTER, "%s", "CALENDAR");
+  it.printf(260, 125, id(font_google_bold_large), RED, TextAlign::TOP_CENTER, "%s", "CALENDAR");
 
-  it.printf(110, 190, id(font_google_bold_small_medium), event_1_color, TextAlign::TOP_LEFT, "%s", id(cal_event_1).state.c_str());
+  it.printf(110, 190, id(font_google_bold_small), event_1_color, TextAlign::TOP_LEFT, "%s", id(cal_event_1).state.c_str());
   it.printf(130, 210, id(font_google_regular_small), event_1_color, TextAlign::TOP_LEFT, "%s", id(cal_event_1_message).state.c_str());
 
-  it.printf(110, 235, id(font_google_bold_small_medium), event_2_color, TextAlign::TOP_LEFT, "%s", id(cal_event_2).state.c_str());
+  it.printf(110, 235, id(font_google_bold_small), event_2_color, TextAlign::TOP_LEFT, "%s", id(cal_event_2).state.c_str());
   it.printf(130, 255, id(font_google_regular_small), event_2_color, TextAlign::TOP_LEFT, "%s", id(cal_event_2_message).state.c_str());
 
-  it.printf(110, 280, id(font_google_bold_small_medium), event_3_color, TextAlign::TOP_LEFT, "%s", id(cal_event_3).state.c_str());
+  it.printf(110, 280, id(font_google_bold_small), event_3_color, TextAlign::TOP_LEFT, "%s", id(cal_event_3).state.c_str());
   it.printf(130, 300, id(font_google_regular_small), event_3_color, TextAlign::TOP_LEFT, "%s", id(cal_event_3_message).state.c_str());
 
-  it.printf(110, 325, id(font_google_bold_small_medium), event_4_color, TextAlign::TOP_LEFT, "%s", id(cal_event_4).state.c_str());
+  it.printf(110, 325, id(font_google_bold_small), event_4_color, TextAlign::TOP_LEFT, "%s", id(cal_event_4).state.c_str());
   it.printf(130, 345, id(font_google_regular_small), event_4_color, TextAlign::TOP_LEFT, "%s", id(cal_event_4_message).state.c_str());
 
   // Commute
   it.printf(135, 400, id(font_mdi_medium_large), RED, TextAlign::TOP_RIGHT, "%s", various_icons["vehicle"].c_str());
-  it.print(260, 395, id(font_google_bold_x_large), RED, TextAlign::TOP_CENTER, "COMMUTE");
+  it.print(260, 395, id(font_google_bold_large), RED, TextAlign::TOP_CENTER, "COMMUTE");
 
   it.print(225, 456, id(font_google_bold_medium), Color::BLACK, TextAlign::TOP_RIGHT, "MONICA");
   it.print(255, 456, id(font_google_bold_medium), Color::BLACK, TextAlign::TOP_LEFT, "MICHAEL");
@@ -107,8 +107,8 @@ lambda: |-
   it.printf(225, 491, id(font_google_bold_medium), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(PERSON_1_location).state.c_str());
   it.printf(255, 491, id(font_google_bold_medium), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(PERSON_2_location).state.c_str());      
 
-  it.printf(225, 531, id(font_google_regular_medium), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(PERSON_1_commute).state.c_str());
-  it.printf(255, 531, id(font_google_regular_medium), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(PERSON_2_commute).state.c_str());
+  it.printf(225, 531, id(font_google_regular_large), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(PERSON_1_commute).state.c_str());
+  it.printf(255, 531, id(font_google_regular_large), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(PERSON_2_commute).state.c_str());
 
   it.printf(225, 563, id(font_google_regular_medium), Color::BLACK, TextAlign::TOP_RIGHT, id(PERSON_1_travel).state.c_str());
   it.printf(255, 563, id(font_google_regular_medium), Color::BLACK, TextAlign::TOP_LEFT, id(PERSON_2_travel).state.c_str());
