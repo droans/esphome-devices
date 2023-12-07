@@ -93,7 +93,7 @@ lambda: |-
   it.printf(430, id(weather_temperature_y_8).state + id(weather_temperature_y_9).state + 40, id(font_google_regular_small), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(weather_day_4).state.c_str());
   it.printf(430, id(weather_temperature_y_8).state -40, id(font_mdi_small), Color::BLACK, TextAlign::BOTTOM_CENTER, "%s", weather_icon_map[id(condition_day_4).state.c_str()].c_str());
 
-  it.printf(60, 133, id(font_google_bold_medium), RED, TextAlign::TOP_LEFT, "%s", weather_icon_map[id(weather_condition_now).state.c_str()].c_str());
+  it.printf(60, 133, id(font_mdi_large), RED, TextAlign::TOP_LEFT, "%s", weather_icon_map[id(weather_condition_now).state.c_str()].c_str());
   it.printf(420, 113, id(font_google_bold_x_large), RED, TextAlign::TOP_RIGHT, "%2.0f°", id(weather_temperature).state);
 
   it.printf(65, 242, id(font_google_bold_small_medium), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(weather_timestamp_0).state.c_str());
