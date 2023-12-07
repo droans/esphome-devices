@@ -48,7 +48,7 @@ lambda: |-
   it.fill(COLOR_ON);
 
   std::string fam_lbl = std::string("Family:");
-  const auto michael_lbl = std::string("Michael:");
+  const auto personal_lbl = std::string("PERSON:");
   auto event_1 = std::string(id(cal_event_1).state);
   auto event_2 = std::string(id(cal_event_2).state);
   auto event_3 = std::string(id(cal_event_3).state);
