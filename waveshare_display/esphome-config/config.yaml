@@ -48,6 +48,7 @@ packages:
   display_font_img_subs: !include substitutions/display_fonts_img.yaml
   esphome_subs: !include substitutions/esphome.yaml
   network_subs: !include substitutions/network.yaml
+  scripts: !include scripts.yaml
 
 switch:
   - platform: restart
