@@ -29,6 +29,11 @@ script:
           else:
             - delay: ${BOOT_SCRIPT_NO_API_DELAY}
             - script.execute: start_display
+  - id: refresh_screen
+    mode: restart
+    then:
+      - component.update: ${DISPLAY_NAME}
+      - script.execute: update_display
   - id: page_next
     mode: restart
     then:
