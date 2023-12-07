@@ -5,15 +5,3 @@ substitutions:
   EVENT_3_ENTITY: sensor.calendar_event_4
 
   EVENT_TIME_ATTR: message
-
-  ##############################################################
-  
-  EVENT_0_DESC_ID: cal_event_1
-  EVENT_1_DESC_ID: cal_event_2
-  EVENT_2_DESC_ID: cal_event_3
-  EVENT_3_DESC_ID: cal_event_4
-  
-  EVENT_0_TIME_ID: cal_event_1_message
-  EVENT_1_TIME_ID: cal_event_2_message
-  EVENT_2_TIME_ID: cal_event_3_message
-  EVENT_3_TIME_ID: cal_event_4_message

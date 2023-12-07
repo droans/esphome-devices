@@ -4,41 +4,41 @@ text_sensor:
 ############################################################
   - platform: homeassistant
     entity_id: ${PERSON_1_COMMUTE_ENTITY}
-    id: ${PERSON_1_COMMUTE_TIME_ID}
+    id: PERSON_1_commute
 
   - platform: homeassistant
     entity_id: ${PERSON_1_COMMUTE_ENTITY}
     attribute: ${COMMUTE_ROUTE_ATTR}
-    id: ${PERSON_1_COMMUTE_ROUTE_ID}
+    id: PERSON_1_route
   
   - platform: homeassistant
     entity_id: ${PERSON_1_COMMUTE_ENTITY}
     attribute: ${COMMUTE_TO_ATTR}
-    id: ${PERSON_1_COMMUTE_TO_ID}
+    id: PERSON_1_travel
   
   - platform: homeassistant
     entity_id: ${PERSON_1_COMMUTE_ENTITY}
     attribute: ${LOCATION_ATTR}
-    id: ${PERSON_1_LOCATION_ID}
+    id: PERSON_1_location
 
   - platform: homeassistant
     entity_id: ${PERSON_2_COMMUTE_ENTITY}
-    id: ${PERSON_2_COMMUTE_TIME_ID}
+    id: PERSON_2_commute
 
   - platform: homeassistant
     entity_id: ${PERSON_2_COMMUTE_ENTITY}
     attribute: ${COMMUTE_ROUTE_ATTR}
-    id: ${PERSON_2_COMMUTE_ROUTE_ID}
+    id: PERSON_2_route
   
   - platform: homeassistant
     entity_id: ${PERSON_2_COMMUTE_ENTITY}
     attribute: ${COMMUTE_TO_ATTR}
-    id: ${PERSON_2_COMMUTE_TO_ID}
+    id: PERSON_2_travel
 
   - platform: homeassistant
     entity_id: ${PERSON_2_COMMUTE_ENTITY}
     attribute: ${LOCATION_ATTR}
-    id: ${PERSON_2_LOCATION_ID}
+    id: PERSON_2_location
 
 ############################################################
 ####################      WEATHER      #####################
@@ -49,97 +49,97 @@ text_sensor:
 
   - platform: homeassistant
     entity_id: ${CURRENT_CONDITIONS_ENTITY}
-    id: ${CURRENT_CONDITIONS_ID}
+    id: weather_condition_now
     
   - platform: homeassistant
     entity_id: ${HR_0_ENTITY}
     attribute: ${CONDITIONS_ATTR}
-    id: ${HR_0_CONDITION_ID}
+    id: weather_condition_0
 
   - platform: homeassistant
     entity_id: ${HR_0_ENTITY}
     attribute: ${TIME_ATTR}
-    id: ${HR_0_TIME_ID}
+    id: weather_timestamp_0
     
   - platform: homeassistant
     entity_id: ${HR_1_ENTITY}
     attribute: ${CONDITIONS_ATTR}
-    id: ${HR_1_CONDITION_ID}
+    id: weather_condition_1
 
   - platform: homeassistant
     entity_id: ${HR_1_ENTITY}
     attribute: ${TIME_ATTR}
-    id: ${HR_1_TIME_ID}
+    id: weather_timestamp_1
     
   - platform: homeassistant
     entity_id: ${HR_2_ENTITY}
     attribute: ${CONDITIONS_ATTR}
-    id: ${HR_2_CONDITION_ID}
+    id: weather_condition_2
 
   - platform: homeassistant
     entity_id: ${HR_2_ENTITY}
     attribute: ${TIME_ATTR}
-    id: ${HR_2_TIME_ID}
+    id: weather_timestamp_2
     
   - platform: homeassistant
     entity_id: ${HR_3_ENTITY}
     attribute: ${CONDITIONS_ATTR}
-    id: ${HR_3_CONDITION_ID}
+    id: weather_condition_3
 
   - platform: homeassistant
     entity_id: ${HR_3_ENTITY}
     attribute: ${TIME_ATTR}
-    id: ${HR_3_TIME_ID}
+    id: weather_timestamp_3
 
   - platform: homeassistant
     entity_id: ${DAY_0_ENTITY}
     attribute: ${DAYS_DATE_ATTR}
-    id: ${DAY_0_DAY_ID}
+    id: weather_day_0
     
   - platform: homeassistant
     entity_id: ${DAY_1_ENTITY}
     attribute: ${DAYS_DATE_ATTR}
-    id: ${DAY_1_DAY_ID}
+    id: weather_day_1
 
   - platform: homeassistant
     entity_id: ${DAY_2_ENTITY}
     attribute: ${DAYS_DATE_ATTR}
-    id: ${DAY_2_DAY_ID}
+    id: weather_day_2
     
   - platform: homeassistant
     entity_id: ${DAY_3_ENTITY}
     attribute: ${DAYS_DATE_ATTR}
-    id: ${DAY_3_DAY_ID}
+    id: weather_day_3
     
   - platform: homeassistant
     entity_id: sensor.forecast_day_5
     attribute: ${DAYS_DATE_ATTR}
-    id: ${DAY_4_DAY_ID}
+    id: weather_day_4
 
   - platform: homeassistant
     entity_id: ${DAY_0_ENTITY}
     attribute: ${DAYS_CONDITIONS_ATTR}
-    id: ${DAY_0_CONDITION_ID}
+    id: condition_day_0
     
   - platform: homeassistant
     entity_id: ${DAY_1_ENTITY}
     attribute: ${DAYS_CONDITIONS_ATTR}
-    id: ${DAY_1_CONDITION_ID}
+    id: condition_day_1
     
   - platform: homeassistant
     entity_id: ${DAY_2_ENTITY}
     attribute: ${DAYS_CONDITIONS_ATTR}
-    id: ${DAY_2_CONDITION_ID}
+    id: condition_day_2
     
   - platform: homeassistant
     entity_id: ${DAY_3_ENTITY}
     attribute: ${DAYS_CONDITIONS_ATTR}
-    id: ${DAY_3_CONDITION_ID}
+    id: condition_day_3
     
   - platform: homeassistant
     entity_id: ${DAY_4_ENTITY}
     attribute: ${DAYS_CONDITIONS_ATTR}
-    id: ${DAY_4_CONDITION_ID}
+    id: condition_day_4
     
 ############################################################
 ####################      CALENDAR      ####################
@@ -147,40 +147,40 @@ text_sensor:
     
   - platform: homeassistant
     entity_id: ${CURRENT_TIME_ENTITY}
-    id: ${CURRENT_TIME_ID}
+    id: current_time
 
   - platform: homeassistant
     entity_id: ${EVENT_0_ENTITY}
-    id: ${EVENT_0_DESC_ID}
+    id: cal_event_1
 
   - platform: homeassistant
     entity_id: ${EVENT_0_ENTITY}
     attribute: ${EVENT_TIME_ATTR}
-    id: ${EVENT_0_TIME_ID}
+    id: cal_event_1_message
 
   - platform: homeassistant
     entity_id: ${EVENT_1_ENTITY}
-    id: ${EVENT_1_DESC_ID}
+    id: cal_event_2
 
   - platform: homeassistant
     entity_id: ${EVENT_1_ENTITY}
     attribute: ${EVENT_TIME_ATTR}
-    id: ${EVENT_1_TIME_ID}
+    id: cal_event_2_message
 
   - platform: homeassistant
     entity_id: ${EVENT_2_ENTITY}
-    id: ${EVENT_2_DESC_ID}
+    id: cal_event_3
 
   - platform: homeassistant
     entity_id: ${EVENT_2_ENTITY}
     attribute: ${EVENT_TIME_ATTR}
-    id: ${EVENT_2_TIME_ID}
+    id: cal_event_3_message
 
   - platform: homeassistant
     entity_id: ${EVENT_3_ENTITY}
-    id: ${EVENT_3_DESC_ID}
+    id: cal_event_4
     
   - platform: homeassistant
     entity_id: ${EVENT_3_ENTITY}
     attribute: ${EVENT_TIME_ATTR}
-    id: ${EVENT_3_TIME_ID}
+    id: cal_event_4_message

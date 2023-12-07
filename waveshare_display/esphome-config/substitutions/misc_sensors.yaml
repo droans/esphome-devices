@@ -22,19 +22,3 @@ substitutions:
   COMMUTE_ROUTE_ATTR: route
   COMMUTE_TO_ATTR: travel
   LOCATION_ATTR:  location
-  
-  ##############################################################
-
-  CURRENT_TIME_ID: current_time
-
-  PERSON_1_COMMUTE_TIME_ID: PERSON_1_commute
-  PERSON_2_COMMUTE_TIME_ID: PERSON_2_commute
-
-  PERSON_1_COMMUTE_ROUTE_ID: PERSON_1_route
-  PERSON_2_COMMUTE_ROUTE_ID: PERSON_2_route
-
-  PERSON_1_COMMUTE_TO_ID: PERSON_1_travel
-  PERSON_2_COMMUTE_TO_ID: PERSON_2_travel
-
-  PERSON_1_LOCATION_ID: PERSON_1_location
-  PERSON_2_LOCATION_ID: PERSON_2_location

@@ -5,7 +5,7 @@ font:
   ##                        ##
   ############################
   - file: ${MDI_FONT_DIR}
-    id: ${MDI_FONT_ID_LG}
+    id: font_mdi_medium_large
     size: ${MDI_FONT_SIZE_LG}
     glyphs: &mdi-weather-glyphs
       - "\U000F0590" # mdi-weather-cloudy
@@ -45,12 +45,12 @@ font:
       - "\U000F010B" #Car
 
   - file: ${MDI_FONT_DIR}
-    id: ${MDI_FONT_ID_MED}
+    id: font_mdi_medium
     size: ${MDI_FONT_SIZE_MED}
     glyphs: *mdi-weather-glyphs
 
   - file: ${MDI_FONT_DIR}
-    id: ${MDI_FONT_ID_SM}
+    id: font_mdi_small
     size: ${MDI_FONT_SIZE_SM}
     glyphs: *mdi-weather-glyphs
 
@@ -80,21 +80,21 @@ font:
   ############################
 
   - file: ${G_SANS_BOLD_FONT_DIR}
-    id: ${G_SANS_BOLD_ID_XL}
+    id: font_google_bold_x_large
     size: ${G_SANS_BOLD_SIZE_XL}
 
   - file: ${G_SANS_BOLD_FONT_DIR}
-    id: ${G_SANS_BOLD_ID_LG}
+    id: font_google_bold_large
     size: ${G_SANS_BOLD_SIZE_LG}
 
   - file: ${G_SANS_BOLD_FONT_DIR}
-    id: ${G_SANS_BOLD_ID_MED}
+    id: font_google_bold_medium
     size: ${G_SANS_BOLD_SIZE_MED}
 
   - file: ${G_SANS_BOLD_FONT_DIR}
-    id: ${G_SANS_BOLD_ID_SM_MED}
+    id: font_google_bold_small_medium
     size: ${G_SANS_BOLD_SIZE_SM_MED}
 
   - file: ${G_SANS_BOLD_FONT_DIR}
-    id: ${G_SANS_BOLD_ID_SM}
+    id: font_google_bold_small
     size: ${G_SANS_BOLD_SIZE_SM}

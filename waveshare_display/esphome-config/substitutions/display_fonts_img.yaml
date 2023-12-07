@@ -2,7 +2,6 @@ substitutions:
   WIFI_QR_CODE_PICTURE: "/config/waveshare_eink/upload/images/wifi_qr_code.png"
   WIFI_QR_CODE_TYPE: BINARY
   WIFI_QR_CODE_RESIZE: 100x100
-  WIFI_QR_CODE_ID: wifi_qr
 
   MDI_FONT_DIR: '/config/waveshare_eink/upload/fonts/icons/materialdesignicons-webfont_latest.ttf'
   G_SANS_REG_FONT_DIR: '/config/shared/fonts/google/GoogleSans-Regular.ttf'
@@ -21,17 +20,3 @@ substitutions:
   G_SANS_BOLD_SIZE_MED: '36'
   G_SANS_BOLD_SIZE_SM_MED: '24'
   G_SANS_BOLD_SIZE_SM: '18'
-
-  MDI_FONT_ID_LG: font_mdi_medium_large
-  MDI_FONT_ID_MED: font_mdi_medium
-  MDI_FONT_ID_SM: font_mdi_small
-
-  G_SANS_REG_ID_LG: font_google_regular_large
-  G_SANS_REG_ID_MED: font_google_regular_medium
-  G_SANS_REG_ID_SM: font_google_regular_small
-
-  G_SANS_BOLD_ID_XL: font_google_bold_x_large
-  G_SANS_BOLD_ID_LG: font_google_bold_large
-  G_SANS_BOLD_ID_MED: font_google_bold_medium
-  G_SANS_BOLD_ID_SM_MED: font_google_bold_small_medium
-  G_SANS_BOLD_ID_SM: font_google_bold_small

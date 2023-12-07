@@ -66,7 +66,7 @@ script:
     # minutes between any refresh (on boot, button press, refresh).
     # If you would like to update the display outside of this script,
     # add an action to execute this script at the end of your code.
-  - id: ${UPDATE_SCRIPT_NAME}
+  - id: update_display
     mode: ${UPDATE_SCRIPT_MODE}
     then: 
       - delay: ${REFRESH_DELAY}
@@ -78,13 +78,13 @@ script:
           else:
             - display.page.show_next: ${DISPLAY_NAME}
       - component.update: ${DISPLAY_NAME}
-      - script.execute: ${UPDATE_SCRIPT_NAME}
+      - script.execute: update_display
 
   # First refresh of display after being plugged in.
   # Will wait five seconds after an API connection
   # to help improve the chances that data from the 
   # HA sensors has come through.
-  - id: ${BOOT_SCRIPT_NAME}
+  - id: start_display
     mode: ${BOOT_SCRIPT_MODE}
     then: 
       - if:
@@ -93,7 +93,7 @@ script:
           then:
             - delay: ${BOOT_SCRIPT_API_REFRESH_DELAY}
             - component.update: ${DISPLAY_NAME}
-            - script.execute: ${UPDATE_SCRIPT_NAME}
+            - script.execute: update_display
           else:
             - delay: ${BOOT_SCRIPT_NO_API_DELAY}
-            - script.execute: ${BOOT_SCRIPT_NAME}
+            - script.execute: start_display
