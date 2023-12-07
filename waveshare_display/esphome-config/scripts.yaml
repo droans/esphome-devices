@@ -36,6 +36,35 @@ script:
           else:
             - delay: ${BOOT_SCRIPT_NO_API_DELAY}
             - script.execute: start_display
+  - id: page_next
+    mode: restart
+    then:
+      - if:
+          condition:
+            or:
+              - display.is_displaying_page: ${PAGE_1_NAME}
+              - display.is_displaying_page: ${PAGE_2_NAME}
+          then:
+            - display.page.show_next: ${DISPLAY_NAME}
+          else:
+            - display.page.show: ${PAGE_1_NAME}
+      - component.update: ${DISPLAY_NAME}
+      - script.execute: update_display
+
+  - id: page_previous
+    mode: restart
+    then:
+      - if:
+          condition:
+            or:
+              - display.is_displaying_page: ${PAGE_2_NAME}
+              - display.is_displaying_page: ${PAGE_3_NAME}
+          then:
+            - display.page.show_previous: ${DISPLAY_NAME}
+          else:
+            - display.page.show: ${PAGE_3_NAME}
+      - component.update: ${DISPLAY_NAME}
+      - script.execute: update_display
   - id: page_select
     parameters:
       page_id: 'display::DisplayPage*'
