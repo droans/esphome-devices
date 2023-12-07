@@ -125,5 +125,5 @@ lambda: |-
   //it.filled_rectangle(476,0,4,50);	//Time Right Seperator
 
   //WiFi QR Code
-  it.printf(190, 680, id(font_google_bold_medium), RED, TextAlign::TOP_CENTER, "%s", various_icons["icon-wifi"].c_str());
+  it.printf(190, 680, id(font_mdi_large), RED, TextAlign::TOP_CENTER, "%s", various_icons["icon-wifi"].c_str());
   it.image(260, 680, id(wifi_qr));
