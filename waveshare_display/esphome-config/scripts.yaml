@@ -24,8 +24,7 @@ script:
             api.connected:
           then:
             - delay: ${BOOT_SCRIPT_API_REFRESH_DELAY}
-            - component.update: ${DISPLAY_NAME}
-            - script.execute: update_display
+            - script.execute: refresh_screen
           else:
             - delay: ${BOOT_SCRIPT_NO_API_DELAY}
             - script.execute: start_display
