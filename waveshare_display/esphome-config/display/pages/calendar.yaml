@@ -35,6 +35,7 @@ lambda: |-
       {"tornado", "\U000F0F38"},
       {"windy", "\U000F059D"},
       {"windy-variant", "\U000F059E"},
+      {"calendar","\U000F00ED"}
     };
 
   std::map<std::string, std::string> various_icons
