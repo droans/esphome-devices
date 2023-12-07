@@ -4,7 +4,7 @@ font:
   ##  Material Design Icons ##
   ##                        ##
   ############################
-  - file: '/config/fonts/icons/materialdesignicons-webfont_latest.ttf'
+  - file: ${MDI_FONT_DIR}
     id: font_mdi_large
     size: 96
     glyphs: &mdi-weather-glyphs
