@@ -1,8 +1,8 @@
 # Waveshare Display Configuration
 For use with the Waveshare 7.5inch e-Paper B V2 display.
 
-<img src="static/weather.jpeg" alt="Example of Weather Display Screen Tab" width="39.4%"/>
-<img src="static/calendar.jpeg" alt="Example of Calendar Display Screen Tab" width="40%"/>
+<img src="static/weather.jpeg" alt="Example of Weather Display Screen Tab" width="30%"/>
+<img src="static/calendar.jpeg" alt="Example of Calendar Display Screen Tab" width="30%"/>
 
 ## Updates:
 ### Dec 7, 2023
