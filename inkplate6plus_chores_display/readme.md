@@ -25,9 +25,10 @@ All files were taken from my personal installation. You will need to adjust part
 #####  Steps:
 
 1. Install the Grocy Integration.
-2. Copy the files in `hass-config/` to your HA packages directory.
-3. Go through each file and make adjustments as necessary
-4. Restart Home Assistant and validate the sensors are working. 
+2. Copy the files in `hass-config/chores` to your HA packages directory.
+3. Copy the files in `hass-config/custom_templates` to your HA custom Jinja templates directory.
+4. Go through each file and make adjustments as necessary. Each tab contains a section at the top with some help. You will also need to replace the names "Monica" and "Michael" on each tab as necessary.
+5. Restart Home Assistant and validate the sensors are working. 
 
 ---
 ###   ESPHome
@@ -45,7 +46,8 @@ All files were taken from my personal installation. You will need to adjust part
 
 ```
 packages:
-  config: !include display/config.yaml #Points to the config file you added
+  config: !include display/chores/config.yaml #Points to the config file you added
 ```
 
-3. Validate and install the configuration. 
+4. Adjust the files as needed. Many files will have our names (Michael and Monica) instead of what you are using. Adjust those as needed.
+5. Validate and install the configuration. 
