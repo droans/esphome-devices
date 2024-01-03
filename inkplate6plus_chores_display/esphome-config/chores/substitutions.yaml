@@ -1,0 +1,17 @@
+substitutions:
+  # ESPHome
+  ESPHOME_NAME: 
+  DEVICE_NAME: 
+  OTA_PASSWORD: !secret OTA_PASSWORD
+  API_KEY: !secret API_KEY
+  DISPLAY_NAME: main_display
+
+  # Network
+  WIFI_SSID: 
+  WIFI_PASSWORD: 
+  IP_ADDRESS: 
+  GATEWAY_IP: 
+  SUBNET: 
+  DNS_1_IP: 
+  AP_SSID: 
+  AP_PASSWORD: 

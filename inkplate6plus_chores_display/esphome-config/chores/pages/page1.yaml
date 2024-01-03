@@ -1,0 +1,73 @@
+lambda: |-
+  std::map<std::string, std::string> mdi_icons
+    {
+      {"brightness", "\U000F00DE"},
+      {"refresh", "\U000F0450"}
+    };
+  it.fill(Color::WHITE);
+  it.printf(379, 5, id(font_medium_google_bold), Color::BLACK, TextAlign::TOP_CENTER, "%s", id(current_time).state.c_str());
+  it.printf(60, 5, id(font_mdi_medium_large), Color::BLACK, TextAlign::TOP_CENTER, "%s", mdi_icons["brightness"].c_str());
+  it.printf(708, 5, id(font_mdi_medium_large), Color::BLACK, TextAlign::TOP_CENTER, "%s", mdi_icons["refresh"].c_str());
+
+  it.printf(id(monica_name_x).state, id(name_y).state, id(font_medium_google_bold), Color::BLACK, TextAlign::TOP_CENTER, "%s", "Monica");
+  it.printf(id(michael_name_x).state, id(name_y).state, id(font_medium_google_bold), Color::BLACK, TextAlign::TOP_CENTER, "%s", "Michael");
+
+  it.printf(id(chore_left_x).state, id(chore_0_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_0).state.c_str());
+  it.printf(id(chore_left_due_x).state, id(chore_0_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_0_due).state.c_str());
+
+  it.printf(id(chore_left_x).state, id(chore_1_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_1).state.c_str());
+  it.printf(id(chore_left_due_x).state, id(chore_1_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_1_due).state.c_str());
+
+  it.printf(id(chore_left_x).state, id(chore_2_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_2).state.c_str());
+  it.printf(id(chore_left_due_x).state, id(chore_2_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_2_due).state.c_str());
+
+  it.printf(id(chore_left_x).state, id(chore_3_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_3).state.c_str());
+  it.printf(id(chore_left_due_x).state, id(chore_3_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_3_due).state.c_str());
+
+  it.printf(id(chore_left_x).state, id(chore_4_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_4).state.c_str());
+  it.printf(id(chore_left_due_x).state, id(chore_4_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_4_due).state.c_str());
+
+  it.printf(id(chore_left_x).state, id(chore_5_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_5).state.c_str());
+  it.printf(id(chore_left_due_x).state, id(chore_5_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_LEFT, "%s", id(monica_chore_5_due).state.c_str());
+
+  it.printf(id(chore_right_x).state, id(chore_0_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_0).state.c_str());
+  it.printf(id(chore_right_due_x).state, id(chore_0_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_0_due).state.c_str());
+
+  it.printf(id(chore_right_x).state, id(chore_1_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_1).state.c_str());
+  it.printf(id(chore_right_due_x).state, id(chore_1_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_1_due).state.c_str());
+
+  it.printf(id(chore_right_x).state, id(chore_2_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_2).state.c_str());
+  it.printf(id(chore_right_due_x).state, id(chore_2_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_2_due).state.c_str());
+
+  it.printf(id(chore_right_x).state, id(chore_3_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_3).state.c_str());
+  it.printf(id(chore_right_due_x).state, id(chore_3_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_3_due).state.c_str());
+
+  it.printf(id(chore_right_x).state, id(chore_4_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_4).state.c_str());
+  it.printf(id(chore_right_due_x).state, id(chore_4_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_4_due).state.c_str());
+
+  it.printf(id(chore_right_x).state, id(chore_5_y).state, id(font_small_med_google_bold), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_5).state.c_str());
+  it.printf(id(chore_right_due_x).state, id(chore_5_due_y).state, id(font_small_google_regular), Color::BLACK, TextAlign::TOP_RIGHT, "%s", id(michael_chore_5_due).state.c_str());
+  
+  it.filled_rectangle(0, id(chore_0_y).state + id(chore_border_offset).state, 758, 2, Color::BLACK);
+  it.filled_rectangle(0, id(chore_1_y).state + id(chore_border_offset).state, 758, 2, Color::BLACK);
+  it.filled_rectangle(0, id(chore_2_y).state + id(chore_border_offset).state, 758, 2, Color::BLACK);
+  it.filled_rectangle(0, id(chore_3_y).state + id(chore_border_offset).state, 758, 2, Color::BLACK);
+  it.filled_rectangle(0, id(chore_4_y).state + id(chore_border_offset).state, 758, 2, Color::BLACK);
+  it.filled_rectangle(0, id(chore_5_y).state + id(chore_border_offset).state, 758, 2, Color::BLACK);
+  it.filled_rectangle(0, id(chore_bottom_border_y).state, 758, 2, Color::BLACK);
+  it.filled_rectangle(379, id(chore_0_y).state + id(chore_border_offset).state, 2, id(chore_bottom_border_y).state - (id(chore_0_y).state + id(chore_border_offset).state), Color::BLACK);
+
+  if (id(chore_is_selected).state) {
+    ESP_LOGI("screen", "Filling %f %f %f %f", id(selected_chore_x_start).state, id(selected_chore_x_end).state, id(selected_chore_y_start).state,id(selected_chore_y_end).state);
+    it.filled_rectangle(id(selected_chore_x_start).state, id(selected_chore_y_start).state, id(selected_chore_x_end).state,id(selected_chore_y_end).state, Color::BLACK);
+    if (id(selected_chore_text_direction).state == 0) {
+      ESP_LOGI("screen", "Putting %s at %f, %f, aligned left", id(chore_id_selected).state.c_str(), id(selected_chore_text_x).state, id(selected_chore_text_y).state);
+      it.printf(id(selected_chore_text_x).state, id(selected_chore_text_y).state, id(font_small_med_google_bold), Color::WHITE, TextAlign::TOP_LEFT, "%s", id(chore_id_selected).state.c_str());
+    } else {
+      ESP_LOGI("screen", "Putting %s at %f, %f, aligned right", id(chore_id_selected).state.c_str(), id(selected_chore_text_x).state, id(selected_chore_text_y).state);
+      it.printf(id(selected_chore_text_x).state, id(selected_chore_text_y).state, id(font_small_med_google_bold), Color::WHITE, TextAlign::TOP_RIGHT, "%s", id(chore_id_selected).state.c_str());
+    }
+    it.filled_rectangle(0, id(chore_bottom_border_y).state, 758, id(chore_mark_bottom_y).state - id(chore_bottom_border_y).state, Color::BLACK);
+    it.printf(id(monica_name_x).state, id(chore_mark_y).state, id(font_medium_google_bold), Color::WHITE, TextAlign::TOP_CENTER, "%s", "Monica");
+    it.printf(id(michael_name_x).state, id(chore_mark_y).state, id(font_medium_google_bold), Color::WHITE, TextAlign::TOP_CENTER, "%s", "Michael");
+  }

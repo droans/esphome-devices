@@ -1,0 +1,38 @@
+script:
+  grocy_mark_task_complete:
+    alias: Display-Mark Task Complete
+    variables:
+      # Default: Should next schedule be skipped for chores
+      default_chore_skipped: False 
+    sequence:
+      - if:
+          - condition: template
+            value_template: >-
+              {% set result = task is defined %}
+              {{ result }}
+        then:
+          - service: grocy.complete_task
+            data:
+              task_id: >-
+                {% set result =  task %}
+                {{ result }}
+        else:
+            - service: grocy.execute_chore
+              data:
+                chore_id: >-
+                  {% set result = chore %}
+                  {{ result }}
+                done_by: >-
+                  {% if user in ['Michael','michael',2,'2'] %}
+                    {% set result = 2 %}
+                  {% elif user in 'Monica','monica', 3, '3' %}
+                    {% set result = 3 %}
+                  {% endif %}
+                  {{ result }}
+                skipped: >-
+                  {% if skipped is defined %}
+                    {% set result = skipped %}
+                  {% else %}
+                    {% set result = default_chore_skipped %}
+                  {% endif %}
+                  {{ result }}

@@ -1,0 +1,110 @@
+font:
+  - file: '/config/fonts/icons/materialdesignicons-webfont_latest.ttf'
+    id: font_mdi_medium_large
+    size: 48
+    glyphs: &mdi-weather-glyphs
+      - "\U000F00DE" #mdi-brightness-5
+      - "\U000F0450" #mdi-refresh
+
+  - file: '/config/fonts/icons/materialdesignicons-webfont_latest.ttf'
+    id: font_mdi_medium
+    size: 36
+    glyphs: *mdi-weather-glyphs
+
+  - file: '/config/fonts/google/GoogleSans-Regular.ttf'
+    id: font_x_medium_google_regular
+    size: 30
+    glyphs: &glyphs
+    - ' '
+    - '!'
+    - '"'
+    - '%'
+    - (
+    - )
+    - +
+    - ','
+    - '-'
+    - .
+    - /
+    - '0'
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+    - '6'
+    - '7'
+    - '8'
+    - '9'
+    - ':'
+    - '='
+    - 'A'
+    - 'B'
+    - 'C'
+    - 'D'
+    - 'E'
+    - 'F'
+    - 'G'
+    - 'H'
+    - 'I'
+    - 'J'
+    - 'K'
+    - 'L'
+    - 'M'
+    - 'N'
+    - 'O'
+    - 'P'
+    - 'Q'
+    - 'R'
+    - 'S'
+    - 'T'
+    - 'U'
+    - 'V'
+    - 'W'
+    - 'X'
+    - 'Y'
+    - 'Z'
+    - '_'
+    - 'a'
+    - 'b'
+    - 'c'
+    - 'd'
+    - 'e'
+    - 'f'
+    - 'g'
+    - 'h'
+    - 'i'
+    - 'j'
+    - 'k'
+    - 'l'
+    - 'm'
+    - 'n'
+    - 'o'
+    - 'p'
+    - 'q'
+    - 'r'
+    - 's'
+    - 't'
+    - 'u'
+    - 'v'
+    - 'w'
+    - 'x'
+    - 'y'
+    - 'z'
+    - '°'
+    - "'"
+    
+  - file: '/config/fonts/google/GoogleSans-Regular.ttf'
+    id: font_small_google_regular
+    size: 24
+    glyphs: *glyphs
+
+  - file: '/config/fonts/google/GoogleSans-Bold.ttf'
+    id: font_medium_google_bold
+    size: 36
+    glyphs: *glyphs
+
+  - file: '/config/fonts/google/GoogleSans-Bold.ttf'
+    id: font_small_med_google_bold
+    size: 30
+    glyphs: *glyphs

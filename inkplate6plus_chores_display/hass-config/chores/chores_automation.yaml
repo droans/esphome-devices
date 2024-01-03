@@ -1,0 +1,308 @@
+#################################################################################################################
+#
+# Validate or change the entity IDs of the following sensors from the ESPHome Chores Display device:
+# * binary_sensor.chores_display_any_touch
+# * binary_sensor.chores_display_chore_0x0 (0x0 through 1x5)
+# * button.chores_display_update_display
+#
+# Validate or change the entity IDs of the following sensors from your HA config:
+# * sensor.monica_chore_0 (0-7)
+# * sensor.michael_chore_0 (0-7)
+# 
+# Create the following helpers:
+# * input_number.selected_chore_x_start
+# * input_number.selected_chore_x_end
+# * input_number.selected_chore_y_start
+# * input_number.selected_chore_y_end
+# * input_number.selected_chore_text_x
+# * input_number.selected_chore_text_y
+# * input_number.selected_chore_text_direction
+# * input_text.selected_chore_id
+# * input_boolean.chore_is_selected
+# 
+#################################################################################################################
+
+automation:
+  - id: get_selected_chore
+    alias: Misc-Display-Chores Get Selected Chore
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.chores_display_any_touch
+        from: "on"
+        to: "off"
+        for:
+          seconds: 0.5
+    variables:
+      # Defines the basic X points for each task and their attributes. 
+      # If a task is selected, the display will use this data so it can overwrite the area with a black box and white text
+      sensor_data: >-
+        {% set update_limit_secs = 0.75 %}
+        {% set sensors = {
+            'binary_sensor.chores_display_chore_0x0': {
+              'id': 'sensor.monica_chore_0',
+              'x_start': 0,
+              'x_end': 379,
+              'y_start_attr': 'chore_0_y',
+              'y_end_attr': 'chore_1_y',
+              'text_x': 10,
+              'text_dir': 0,
+            },
+            'binary_sensor.chores_display_chore_0x1': {
+              'id': 'sensor.monica_chore_1',
+              'x_start': 0,
+              'x_end': 379,
+              'y_start_attr': 'chore_1_y',
+              'y_end_attr': 'chore_2_y',
+              'text_x': 10,
+              'text_dir': 0,
+            },
+            'binary_sensor.chores_display_chore_0x2': {
+              'id': 'sensor.monica_chore_2',
+              'x_start': 0,
+              'x_end': 379,
+              'y_start_attr': 'chore_2_y',
+              'y_end_attr': 'chore_3_y',
+              'text_x': 10,
+              'text_dir': 0,
+            },
+            'binary_sensor.chores_display_chore_0x3': {
+              'id': 'sensor.monica_chore_3',
+              'x_start': 0,
+              'x_end': 379,
+              'y_start_attr': 'chore_3_y',
+              'y_end_attr': 'chore_4_y',
+              'text_x': 10,
+              'text_dir': 0,
+            },
+            'binary_sensor.chores_display_chore_0x4': {
+              'id': 'sensor.monica_chore_4',
+              'x_start': 0,
+              'x_end': 379,
+              'y_start_attr': 'chore_4_y',
+              'y_end_attr': 'chore_5_y',
+              'text_x': 10,
+              'text_dir': 0,
+            },
+            'binary_sensor.chores_display_chore_0x5': {
+              'id': 'sensor.monica_chore_5',
+              'x_start': 0,
+              'x_end': 379,
+              'y_start_attr': 'chore_5_y',
+              'y_end_attr': 'chore_bottom_border_y',
+              'text_x': 10,
+              'text_dir': 0,
+            },
+            'binary_sensor.chores_display_chore_1x0': {
+              'id': 'sensor.michael_chore_0',
+              'x_start': 380,
+              'x_end': 758,
+              'y_start_attr': 'chore_0_y',
+              'y_end_attr': 'chore_1_y',
+              'text_x': 748,
+              'text_dir': 1,
+            },
+            'binary_sensor.chores_display_chore_1x1': {
+              'id': 'sensor.michael_chore_1',
+              'x_start': 380,
+              'x_end': 758,
+              'y_start_attr': 'chore_1_y',
+              'y_end_attr': 'chore_2_y',
+              'text_x': 748,
+              'text_dir': 1,
+            },
+            'binary_sensor.chores_display_chore_1x2': {
+              'id': 'sensor.michael_chore_2',
+              'x_start': 380,
+              'x_end': 758,
+              'y_start_attr': 'chore_2_y',
+              'y_end_attr': 'chore_3_y',
+              'text_x': 748,
+              'text_dir': 1,
+            },
+            'binary_sensor.chores_display_chore_1x3': {
+              'id': 'sensor.michael_chore_3',
+              'x_start': 380,
+              'x_end': 758,
+              'y_start_attr': 'chore_3_y',
+              'y_end_attr': 'chore_4_y',
+              'text_x': 748,
+              'text_dir': 1,
+            },
+            'binary_sensor.chores_display_chore_1x4': {
+              'id': 'sensor.michael_chore_4',
+              'x_start': 380,
+              'x_end': 758,
+              'y_start_attr': 'chore_4_y',
+              'y_end_attr': 'chore_5_y',
+              'text_x': 748,
+              'text_dir': 1,
+            },
+            'binary_sensor.chores_display_chore_1x5': {
+              'id': 'sensor.michael_chore_5',
+              'x_start': 380,
+              'x_end': 758,
+              'y_start_attr': 'chore_5_y',
+              'y_end_attr': 'chore_bottom_border_y',
+              'text_x': 748,
+              'text_dir': 1,
+            },
+            'binary_sensor.chores_display_chore_0_mark': {
+              'id': 'monica',
+            },
+            'binary_sensor.chores_display_chore_1_mark': {
+              'id': 'michael',
+            },
+          }
+        %}
+        {% set ns = namespace(ok_sensors=[],oldest_ts=0,sensor='') %}
+        {% set now_ts = now() | as_timestamp %}
+        {% for sensor in sensors %}
+          {% set ts = states[sensor].last_updated | as_timestamp %}
+          {% if ts > now_ts - update_limit_secs %}
+            {% set ns.ok_sensors = ns.ok_sensors + [sensor] %}
+            {% if ts > ns.oldest_ts %}
+              {% set ns.sensor = sensor %}
+              {% set ns.oldest_ts = ts %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        {% if ns.ok_sensors | length == 1 %}
+          {% set sensor = ns.sensor %}
+          {% set result = sensors[sensor] %}
+        {% else %}
+          {% set result = false %}
+        {% endif %}
+        {{ result }}
+      xy_points: >-
+        {% if sensor_data is not false and sensor_data.id not in ['monica','michael'] %}
+          {% set all_data = states.sensor.all_chores.attributes %}
+          {% set border_offset = all_data.chore_border_offset | int %}
+          {% set top_attr = sensor_data.y_start_attr %}
+          {% set bottom_attr = sensor_data.y_end_attr %}
+          {% set top = all_data[top_attr] | int + border_offset %}
+          {% if sensor_data.id in ['sensor.michael_chore_5','sensor.monica_chore_5'] %}
+            {% set bottom = all_data[bottom_attr] | int - top %}
+          {% else %}
+            {% set bottom = all_data[bottom_attr] | int + border_offset - top %}
+          {% endif %}
+          {% set left = sensor_data.x_start %}
+          {% set right = (sensor_data.x_end | int) - (left | int) %}
+          {% set result = {'top': top, 'bottom': bottom, 'left': left, 'right': right, 'text_x': sensor_data.text_x, 'text_y': all_data[top_attr] | int} %}
+        {% else %}
+          {% set result = false %}
+        {% endif %}
+        {{ result }}
+    action:
+      - if:
+          - condition: template
+            value_template: >-
+              {% set result = xy_points is not false %}
+              {{ result }}
+        then:
+          - service: input_number.set_value
+            target:
+              entity_id: input_number.selected_chore_x_start
+            data:
+              value: >-
+                {% set result = xy_points.left %}
+                {{ result }}
+          - service: input_number.set_value
+            target:
+              entity_id: input_number.selected_chore_x_end
+            data:
+              value: >-
+                {% set result = xy_points.right %}
+                {{ result }}
+          - service: input_number.set_value
+            target:
+              entity_id: input_number.selected_chore_y_start
+            data:
+              value: >-
+                {% set result = xy_points.top %}
+                {{ result }}
+          - service: input_number.set_value
+            target:
+              entity_id: input_number.selected_chore_y_end
+            data:
+              value: >-
+                {% set result = xy_points.bottom %}
+                {{ result }}
+          - service: input_number.set_value
+            target:
+              entity_id: input_number.selected_chore_text_y
+            data:
+              value: >-
+                {% set result = xy_points.text_y %}
+                {{ result }}
+          - service: input_number.set_value
+            target:
+              entity_id: input_number.selected_chore_text_x
+            data:
+              value: >-
+                {% set result = xy_points.text_x %}
+                {{ result }}
+          - service: input_number.set_value
+            target:
+              entity_id: input_number.selected_chore_text_direction
+            data:
+              value: >-
+                {% set result = sensor_data.text_dir %}
+                {{ result }}
+          - service: input_text.set_value
+            target:
+              entity_id: input_text.selected_chore_id
+            data:
+              value: >-
+                {% set result = states(sensor_data.id) %}
+                {{ result }}
+          - service: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.chore_is_selected
+          # - service: button.press
+          #   target:
+          #     entity_id: button.chores_display_update_display
+        else:
+          - service: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.chore_is_selected
+      - if:
+        - condition: template
+          value_template: >-
+            {% set ids = ['monica','michael'] %}
+            {% set result = sensor_data is not false and sensor_data.id in ids %}
+            {{ result }}
+        then:
+          - service: script.mark_off_chore
+            data:
+              person: >-
+                {% set result = sensor_data.id %}
+                {{ result }}
+          - service: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.chore_is_selected
+
+  - id: update_with_chores
+    alias: Misc-Update Display with Chores
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.michael_chore_0
+          - sensor.michael_chore_1
+          - sensor.michael_chore_2
+          - sensor.michael_chore_3
+          - sensor.michael_chore_4
+          - sensor.michael_chore_5
+          - sensor.michael_chore_6
+          - sensor.michael_chore_7
+          - sensor.monica_chore_0
+          - sensor.monica_chore_1
+          - sensor.monica_chore_2
+          - sensor.monica_chore_3
+          - sensor.monica_chore_4
+          - sensor.monica_chore_5
+          - sensor.monica_chore_6
+          - sensor.monica_chore_7
+    action:
+      - service: button.press
+        target:
+          entity_id: button.chores_display_update_display

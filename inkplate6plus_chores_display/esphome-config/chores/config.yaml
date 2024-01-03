@@ -1,0 +1,12 @@
+packages:
+  base: !include /config/inkplate6plus/config.yaml
+  display: !include display.yaml
+  substitutions: !include substitutions.yaml
+  scripts: !include script.yaml
+  sensors: !include sensors.yaml
+  touch_sensors: !include touch_sensors.yaml
+
+esphome:
+  on_boot:
+    then:
+      - script.execute: start_display
