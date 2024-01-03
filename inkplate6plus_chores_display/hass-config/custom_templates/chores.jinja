@@ -1,0 +1,61 @@
+{% macro get_chore_name(person, chore_id, max_days) %}
+  {% set chore_map = {
+      'michael': 'michael_chores',
+      'monica': 'monica_chores',
+    }
+  %}
+  {% set attr = chore_map[person | lower] %}
+  {% set chores = state_attr('sensor.all_chores', attr) %}
+  {% set max_age = (now().date() + timedelta(days=max_days)) | as_timestamp %}
+  {% if chores | length < (chore_id + 1) %}
+    {% set result = '' %}
+  {% else %}
+    {% set chore = chores[chore_id] %}
+    {% set chore_age = chore.next_estimated_execution_time | as_datetime | as_local | as_timestamp  %}
+    {% if chore_age > max_age %}
+      {% set result = '' %}
+    {% else %}
+      {% set result = chore.name %}
+    {% endif %}
+  {% endif %}
+  {% if result | length > 23 %}
+    {% set result = result[:20] + '...' %}
+  {% endif %}
+  {{ result }}
+{% endmacro %}
+
+{% macro get_chore_due_date(person, chore_id, max_days) %}
+  {% set chore_map = {
+      'michael': 'michael_chores',
+      'monica': 'monica_chores',
+    }
+  %}
+  {% set attr = chore_map[person | lower] %}
+  {% set chores = state_attr('sensor.all_chores',attr) %}
+  {% if chores | length < (chore_id + 1) %}
+    {% set result = '' %}
+  {% else %}
+    {% set chore = chores[chore_id] %}
+    {% set today = now().date() %}
+    {% set due = chore.next_estimated_execution_time %}
+    {% set chore_age = due | as_timestamp %}
+    {% set max_age = (today + timedelta(days=max_days)) | as_timestamp %}
+    {% if chore_age > max_age %}
+      {% set result = '' %}
+    {% else %}
+      {% set due_date = due | as_datetime | as_local %}
+      {% if today == due_date.date() %}
+        {% set result = 'Today' %}
+      {% elif today + timedelta(days=1) == due_date.date() %}
+        {% set result = 'Tomorrow' %}
+      {% elif today > due_date.date() %}
+        {% set result = 'OVERDUE' %}
+      {% else %}
+        {% set result = (due_date.date() - now().date()) | string %}
+        {% set result = result.split(',')[0] %}
+        {% set result = 'In ' + result %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  {{ result }}
+{% endmacro %}

@@ -1,0 +1,336 @@
+#################################################################################################################
+#
+# Validate or change the entity IDs of the following sensors from your Grocy integration:
+# * sensor.grocy_chores
+# 
+# Validate or change the entity IDs of the following sensors from your HA config:
+# * sensor.all_chores
+# 
+#################################################################################################################
+
+template:
+  - sensor:
+    - unique_id: all_chores
+      name: All Chores
+      state: "ok"
+      attributes:
+        michael_chores: >-
+          {% set name = 'Michael' %}
+          {% set ns = namespace(chores=[]) %}
+          {% set chores = state_attr('sensor.grocy_chores','chores') %}
+          {% for chore in chores %}
+            {% if chore.next_execution_assigned_user.first_name == name %}
+              {% set ns.chores = ns.chores + [chore] %}
+            {% endif %}
+          {% endfor %}
+          {% set result = ns.chores | sort(attribute='next_estimated_execution_time') %}
+          {{ result }}
+        monica_chores: >-
+          {% set name = 'Monica' %}
+          {% set ns = namespace(chores=[]) %}
+          {% set chores = state_attr('sensor.grocy_chores','chores') %}
+          {% for chore in chores %}
+            {% if chore.next_execution_assigned_user.first_name == name %}
+              {% set ns.chores = ns.chores + [chore] %}
+            {% endif %}
+          {% endfor %}
+          {% set result = ns.chores | sort(attribute='next_estimated_execution_time') %}
+          {{ result }}
+        michael_name_x: '570'
+        monica_name_x: '190'
+        name_y: '120'
+        michael_chore_x: '748'
+        michael_due_x: '718'
+        monica_chore_x: '10'
+        monica_due_x: '40'
+        chore_0_y: '180'
+        chore_0_due_y: '225'
+        chore_1_y: '285'
+        chore_1_due_y: '330'
+        chore_2_y: '390'
+        chore_2_due_y: '435'
+        chore_3_y: '495'
+        chore_3_due_y: '540'
+        chore_4_y: '600'
+        chore_4_due_y: '645'
+        chore_5_y: '705'
+        chore_5_due_y: '750'
+        chore_mark_y: '810'
+        chore_border_offset: '-20'
+        chore_bottom_border_y: '795'
+        chore_mark_bottom_y: '900'
+        chore_max_age: '14'
+    - unique_id: michael_chore_0
+      name: Michael Chore 0
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'michael' %}
+        {% set chore_id = 0 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'michael' %}
+          {% set chore_id = 0 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+        
+    - unique_id: michael_chore_1
+      name: Michael Chore 1
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'michael' %}
+        {% set chore_id = 1 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'michael' %}
+          {% set chore_id = 1 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: michael_chore_2
+      name: Michael Chore 2
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'michael' %}
+        {% set chore_id = 2 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'michael' %}
+          {% set chore_id = 2 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: michael_chore_3
+      name: Michael Chore 3
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'michael' %}
+        {% set chore_id = 3 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'michael' %}
+          {% set chore_id = 3 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: michael_chore_4
+      name: Michael Chore 4
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'michael' %}
+        {% set chore_id = 4 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'michael' %}
+          {% set chore_id = 4 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: michael_chore_5
+      name: Michael Chore 5
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'michael' %}
+        {% set chore_id = 5 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'michael' %}
+          {% set chore_id = 5 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: michael_chore_6
+      name: Michael Chore 6
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'michael' %}
+        {% set chore_id = 6 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'michael' %}
+          {% set chore_id = 6 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: michael_chore_7
+      name: Michael Chore 7
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'michael' %}
+        {% set chore_id = 7 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'michael' %}
+          {% set chore_id = 7 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+
+    - unique_id: monica_chore_0
+      name: Monica Chore 0
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'monica' %}
+        {% set chore_id = 0 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'monica' %}
+          {% set chore_id = 0 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: monica_chore_1
+      name: Monica Chore 1
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'monica' %}
+        {% set chore_id = 1 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'monica' %}
+          {% set chore_id = 1 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: monica_chore_2
+      name: Monica Chore 2
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'monica' %}
+        {% set chore_id = 2 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'monica' %}
+          {% set chore_id = 2 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: monica_chore_3
+      name: Monica Chore 3
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'monica' %}
+        {% set chore_id = 3 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'monica' %}
+          {% set chore_id = 3 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: monica_chore_4
+      name: Monica Chore 4
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'monica' %}
+        {% set chore_id = 4 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'monica' %}
+          {% set chore_id = 4 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: monica_chore_5
+      name: Monica Chore 5
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'monica' %}
+        {% set chore_id = 5 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'monica' %}
+          {% set chore_id = 5 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: monica_chore_6
+      name: Monica Chore 6
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'monica' %}
+        {% set chore_id = 6 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'monica' %}
+          {% set chore_id = 6 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}
+    - unique_id: monica_chore_7
+      name: Monica Chore 7
+      state: >-
+        {% from 'chores.jinja' import get_chore_name %}
+        {% set person = 'monica' %}
+        {% set chore_id = 7 %}
+        {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+        {% set result = get_chore_name(person, chore_id, max_days) %}
+        {{ result }}
+      attributes:
+        due_date: >- 
+          {% from 'chores.jinja' import get_chore_due_date %}
+          {% set person = 'monica' %}
+          {% set chore_id = 7 %}
+          {% set max_days = state_attr('sensor.all_chores','chore_max_age') | int %}
+          {% set result = get_chore_due_date(person, chore_id, max_days) %}
+          {{ result }}

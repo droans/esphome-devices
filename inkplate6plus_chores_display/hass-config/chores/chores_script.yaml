@@ -1,0 +1,40 @@
+#################################################################################################################
+#
+# Validate or change the entity IDs of the following sensors from your Grocy integration:
+# * sensor.grocy_chores
+# 
+#################################################################################################################
+
+script:
+  mark_off_chore:
+    alias: Display-Chores Mark Off Chore
+    variables:
+      chore_id: >-
+        {% set selected_chore_desc = states('input_text.selected_chore_id') %}
+        {% set chores = state_attr('sensor.grocy_chores','chores') %}
+        {% set ns = namespace(id=0) %}
+        {% for chore in chores %}
+          {% if chore.name == selected_chore_desc %}
+            {% set ns.id = chore.id %}
+          {% endif %}
+        {% endfor %}
+        {% set result = ns.id %}
+        {{ result }}
+      user_id: >-
+        {% set users = {
+            'michael': 2,
+            'monica': 3,
+            'teddy': 4
+          }
+        %}
+        {% set result = users[person] %}
+        {{ result }}
+    sequence:
+      - service: grocy.execute_chore
+        data:
+          chore_id: >-
+            {% set result = chore_id %}
+            {{ result }}
+          done_by: >-
+            {% set result = user_id %}
+            {{ result }}
