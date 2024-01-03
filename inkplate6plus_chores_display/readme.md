@@ -31,6 +31,13 @@ All files were taken from my personal installation. You will need to adjust part
 
 ---
 ###   ESPHome
+#####   You will need:
+* An Inkplate 6 Plus
+* ESPHome 2023.11.x (2023.12 changed how touches are reported. If you are using this or a later version, you will need to update the touch points at the bare minimum)
+
+**Notes:** The Inkplate 6 Plus revision I am using has the PCA6416A I/O Expander. Older revisions use the MCP23017 expander. If you are seeing errors in your log about the power supply, try changing that out. The example config for the Inkplate 6 Plus on the ESPHome website should help you out. 
+
+#####  Steps:
 
 1. Create a subdirectory for your device files and copy the files under `esphome-config` into that directory.
 2. Update the data in `secrets.yaml` and each substitution file under `substitutions`. You do not need to update all of the substitutions. Instead, focus primarily on entities (generally labeled as `XXXX_ENTITY`), attributes (`XXXX_ATTR`), display, network and ESPHome configuration, and directory paths. Where possible, the important items are separated from the unimportant items. 
