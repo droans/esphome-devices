@@ -1,0 +1,128 @@
+binary_sensor:
+  - platform: touchscreen
+    name: Any Touch
+    id: any_touch
+    x_min: 0
+    y_min: 0
+    x_max: 600
+    y_max: 800
+  - platform: touchscreen
+    name: Chore 0x0 
+    id: chore_0_0
+    x_min: 0
+    x_max: 295
+    y_min: 139
+    y_max: 219
+  - platform: touchscreen
+    name: Chore 0x1
+    id: chore_0_1
+    x_min: 0
+    x_max: 295
+    y_min: 220
+    y_max: 300
+  - platform: touchscreen
+    name: Chore 0x2
+    id: chore_0_2
+    x_min: 0
+    x_max: 295
+    y_min: 301
+    y_max: 381
+  - platform: touchscreen
+    name: Chore 0x3
+    id: chore_0_3
+    x_min: 0
+    x_max: 295
+    y_min: 382
+    y_max: 462
+  - platform: touchscreen
+    name: Chore 0x4
+    id: chore_0_4
+    x_min: 0
+    x_max: 295
+    y_min: 463
+    y_max: 543
+  - platform: touchscreen
+    name: Chore 0x5
+    id: chore_0_5
+    x_min: 0
+    x_max: 295
+    y_min: 544
+    y_max: 624
+  - platform: touchscreen
+    name: Chore 0 Mark
+    id: chore_0_mark
+    x_min: 0
+    x_max: 295
+    y_min: 625
+    y_max: 704
+
+  - platform: touchscreen
+    name: Chore 1x0 
+    id: chore_1_0
+    x_min: 296
+    x_max: 599
+    y_min: 139
+    y_max: 219
+  - platform: touchscreen
+    name: Chore 1x1
+    id: chore_1_1
+    x_min: 296
+    x_max: 599
+    y_min: 220
+    y_max: 300
+  - platform: touchscreen
+    name: Chore 1x2
+    id: chore_1_2
+    x_min: 296
+    x_max: 599
+    y_min: 301
+    y_max: 381
+  - platform: touchscreen
+    name: Chore 1x3
+    id: chore_1_3
+    x_min: 296
+    x_max: 599
+    y_min: 382
+    y_max: 462
+  - platform: touchscreen
+    name: Chore 1x4
+    id: chore_1_4
+    x_min: 296
+    x_max: 599
+    y_min: 463
+    y_max: 543
+  - platform: touchscreen
+    name: Chore 1x5
+    id: chore_1_5
+    x_min: 296
+    x_max: 599
+    y_min: 544
+    y_max: 624
+  - platform: touchscreen
+    name: Chore 1 Mark
+    id: chore_1_mark
+    x_min: 296
+    x_max: 599
+    y_min: 625
+    y_max: 704
+
+  - platform: touchscreen
+    name: Backlight
+    id: backlight_touchscreen
+    x_min: 0
+    x_max: 100
+    y_min: 0
+    y_max: 100
+    on_press:
+      then:
+        - script.execute: toggle_backlight
+  - platform: touchscreen
+    name: Refresh
+    id: refresh_touchscreen
+    x_min: 490
+    x_max: 590
+    y_min: 0
+    y_max: 100
+    on_press:
+      then:
+        - script.execute: refresh_screen

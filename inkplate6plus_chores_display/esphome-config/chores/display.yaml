@@ -1,0 +1,46 @@
+display:
+  - platform: inkplate6
+    id: ${DISPLAY_NAME}
+    greyscale: false
+    partial_updating: true
+    update_interval: never
+    model: inkplate_6_plus
+    rotation: 270
+    ckv_pin: 32
+    sph_pin: 33
+    gmod_pin:
+      pca6416a: pca6416a_hub
+      number: 1
+    gpio0_enable_pin:
+      pca6416a: pca6416a_hub
+      number: 8
+    oe_pin:
+      pca6416a: pca6416a_hub
+      number: 0
+    spv_pin:
+      pca6416a: pca6416a_hub
+      number: 2
+    powerup_pin:
+      pca6416a: pca6416a_hub
+      number: 4
+    wakeup_pin:
+      pca6416a: pca6416a_hub
+      number: 3
+    vcom_pin:
+      pca6416a: pca6416a_hub
+      number: 5
+    # lambda: |-
+    #   it.fill(COLOR_ON);
+
+    #   it.print(100, 100, id(font_medium_google_bold), COLOR_OFF, TextAlign::TOP_LEFT, "Hello");
+
+    pages: 
+      - id: page1
+        <<: !include pages/page1.yaml
+    # <<: !include pages/page1.yaml
+
+button:
+  - platform: template
+    name: "Update Display"
+    on_press:
+      - script.execute: refresh_screen

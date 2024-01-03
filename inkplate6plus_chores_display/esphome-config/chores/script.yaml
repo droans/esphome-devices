@@ -1,0 +1,57 @@
+script:
+  - id: turn_off_backlight_timeout
+    mode: restart
+    then:
+      - logger.log: 
+          format: "Turning on Backlight for %f seconds"
+          args: ['id(backlight_timeout).state']
+      - delay: !lambda "return id(backlight_timeout).state * 1000;"
+      - light.turn_off: backlight
+  - id: backlight_turned_off
+    mode: restart
+    then:
+      - logger.log: "Turning off backlight"
+      - script.stop: turn_off_backlight_timeout
+  - id: toggle_backlight
+    mode: restart
+    then:
+      - light.toggle: backlight
+  - id: refresh_screen
+    mode: restart
+    then:
+        # Screen becomes blurry if it refreshes while the backlight is on. Turn it off and back on when needed.
+      - if: 
+          condition:
+            - light.is_on: backlight
+          then:
+            - logger.log: "Turning Screen off before continuing..."
+            - light.turn_off: backlight
+            - wait_until:
+                condition:
+                  light.is_off: backlight
+            - component.update: ${DISPLAY_NAME}
+            - script.execute: update_display
+            - light.turn_on: backlight
+          else:
+            - component.update: ${DISPLAY_NAME}
+            - script.execute: update_display
+
+  - id: update_display
+    mode: restart
+    then: 
+      - delay: 600s
+      - display.page.show: page1
+      - script.execute: refresh_screen
+      - script.execute: update_display
+  - id: start_display
+    mode: restart
+    then: 
+      - if:
+          condition:
+            api.connected:
+          then:
+            - delay: 8s
+            - script.execute: refresh_screen
+          else:
+            - delay: 2s
+            - script.execute: start_display

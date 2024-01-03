@@ -1,0 +1,40 @@
+packages:
+  fonts: !include fonts/fonts.yaml
+  display: !include display.yaml
+
+esphome:
+  name: ${ESPHOME_NAME}
+  friendly_name: ${DEVICE_NAME}
+
+esp32:
+  board: esp-wrover-kit
+  framework:
+    type: arduino
+
+wifi:
+  ssid: ${WIFI_SSID}
+  password: ${WIFI_PASSWORD}
+  use_address: ${IP_ADDRESS}
+  manual_ip:
+    gateway: ${GATEWAY_IP}
+    subnet: ${SUBNET}
+    dns1: ${DNS_1_IP}
+    static_ip: ${IP_ADDRESS}
+  ap:
+    ssid: ${AP_SSID}
+    password: ${AP_PASSWORD}
+
+api:
+  encryption:
+    key: ${API_KEY}
+
+captive_portal:
+
+ota:
+  password: ${OTA_PASSWORD}
+
+logger:
+
+switch:
+  - platform: restart
+    name: ${DEVICE_NAME} Restart

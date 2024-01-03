@@ -1,0 +1,237 @@
+text_sensor:
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_0
+    id: michael_chore_0
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_0
+    attribute: due_date
+    id: michael_chore_0_due
+    
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_1
+    id: michael_chore_1
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_1
+    attribute: due_date
+    id: michael_chore_1_due
+    
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_2
+    id: michael_chore_2
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_2
+    attribute: due_date
+    id: michael_chore_2_due
+    
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_3
+    id: michael_chore_3
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_3
+    attribute: due_date
+    id: michael_chore_3_due
+    
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_4
+    id: michael_chore_4
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_4
+    attribute: due_date
+    id: michael_chore_4_due
+    
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_5
+    id: michael_chore_5
+  - platform: homeassistant
+    entity_id: sensor.michael_chore_5
+    attribute: due_date
+    id: michael_chore_5_due
+    
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_0
+    id: monica_chore_0
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_0
+    attribute: due_date
+    id: monica_chore_0_due
+    
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_1
+    id: monica_chore_1
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_1
+    attribute: due_date
+    id: monica_chore_1_due
+    
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_2
+    id: monica_chore_2
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_2
+    attribute: due_date
+    id: monica_chore_2_due
+    
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_3
+    id: monica_chore_3
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_3
+    attribute: due_date
+    id: monica_chore_3_due
+    
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_4
+    id: monica_chore_4
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_4
+    attribute: due_date
+    id: monica_chore_4_due
+
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_5
+    id: monica_chore_5
+  - platform: homeassistant
+    entity_id: sensor.monica_chore_5
+    attribute: due_date
+    id: monica_chore_5_due
+
+  - platform: homeassistant
+    entity_id: sensor.cur_time
+    id: current_time
+
+  - platform: homeassistant
+    entity_id: input_text.selected_chore_id
+    id: chore_id_selected
+
+sensor: 
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: name_y
+    id: name_y
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: michael_name_x
+    id: michael_name_x
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: monica_name_x
+    id: monica_name_x
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: monica_chore_x
+    id: chore_left_x
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: monica_due_x
+    id: chore_left_due_x
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: michael_chore_x
+    id: chore_right_x
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: michael_due_x
+    id: chore_right_due_x
+
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_0_y
+    id: chore_0_y
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_0_due_y
+    id: chore_0_due_y
+
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_1_y
+    id: chore_1_y
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_1_due_y
+    id: chore_1_due_y
+
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_2_y
+    id: chore_2_y
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_2_due_y
+    id: chore_2_due_y
+
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_3_y
+    id: chore_3_y
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_3_due_y
+    id: chore_3_due_y
+
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_4_y
+    id: chore_4_y
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_4_due_y
+    id: chore_4_due_y
+
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_5_y
+    id: chore_5_y
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_5_due_y
+    id: chore_5_due_y
+
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_border_offset
+    id: chore_border_offset
+
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_bottom_border_y
+    id: chore_bottom_border_y
+
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_mark_y
+    id: chore_mark_y
+  - platform: homeassistant
+    entity_id: sensor.all_chores
+    attribute: chore_mark_bottom_y
+    id: chore_mark_bottom_y
+
+  - platform: homeassistant
+    entity_id: input_number.selected_chore_x_start
+    id: selected_chore_x_start
+  - platform: homeassistant
+    entity_id: input_number.selected_chore_x_end
+    id: selected_chore_x_end
+  - platform: homeassistant
+    entity_id: input_number.selected_chore_y_start
+    id: selected_chore_y_start
+  - platform: homeassistant
+    entity_id: input_number.selected_chore_y_end
+    id: selected_chore_y_end
+  - platform: homeassistant
+    entity_id: input_number.selected_chore_text_x
+    id: selected_chore_text_x
+  - platform: homeassistant
+    entity_id: input_number.selected_chore_text_y
+    id: selected_chore_text_y
+  - platform: homeassistant
+    entity_id: input_number.selected_chore_text_direction
+    id: selected_chore_text_direction
+
+binary_sensor:
+  - platform: homeassistant
+    entity_id: input_boolean.chore_is_selected
+    id: chore_is_selected
+    on_state:
+      then:
+        - script.execute: refresh_screen
